@@ -1,0 +1,44 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+
+{% endblock %}
+
+
+
+{% block corps %}
+
+<h1>Formulaire de création</h1>
+
+<form method="post" action="{{url_for('creation')}}" class="">
+    <div>
+        <label for="champs_ref">Référence bibliographique : </label>
+        <input type="text" name="lettre_volume" placeholder="Référence bibliographique" id="champs_ref">
+    </div>
+
+    <div>
+        <label for="champs_num">Numéro de la  lettre : </label>
+        <input type="text" name="lettre_numero" placeholder="Identifiant de la lettre" id="champs_num">
+    </div>
+
+    <div>
+        <label for="champs_redacteur">Rédacteur : </label>
+        <input type="text" name="lettre_redacteur" placeholder="Auteur de la lettre" id="champs_redacteur">
+    </div>
+
+    <div>
+        <label for="champs_lieu">Lieu d'envoi : </label>
+        <input type="text" name="lettre_lieu" placeholder="Lieu d'envoi de la lettre" id="champs_lieu">
+    </div>
+
+    <div>
+        <label for="champs_date">Date de la lettre : </label>
+        <input type="text" name="lettre_date" placeholder="Date de la lettre" id="champs_date">
+    </div>
+    <button type="submit">Sauvegarder</button>
+
+
+</form>
+
+
+{% endblock %}

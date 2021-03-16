@@ -1,0 +1,510 @@
+Id;ref_volume;numero_lettre;auteur;lieu_envoi;date_envoi
+1;1;869;P. Caesar Helmius;Venise;1558-07-02
+2;1;873;P. Antonius Araozius;Saragosse;1558-07-06
+3;1;879;P. Oliverius Manareus;Macerata;1558-07-15
+4;1;882;P. Caesar Helmius;Venise;1558-07-16
+5;1;883;P. Oliverius Manareus;Lorette;1558-07-16
+6;1;888;P. Paulus Achilles;Palerme;1558-07-18
+7;1;900;P. Ludovicus Coudretus;Annecy;1558-07-27
+8;1;903;P. Oliverius Manareus;Lorette;1558-07-30
+9;1;904;P. Joannes Gurrea;Amelia;1558-08-02
+10;1;905;P. Petrus Pradene;Tivoli;1558-08-02
+11;1;911;P. Paulus Achilles;Palerme;1558-08-09
+12;1;917;P. Caesar Helmius;Venise;1558-08-13
+13;1;918;P. David Wolfius;Modène;1558-08-17
+14;1;919;P. Ignatius de Acevedo;Lisbonne;1558-08-19
+15;1;927;P. Pontius Cogordanus;Assise;1558-08-30
+16;1;928;P. Joannes Rogerius;Amelia;1558-08-30
+17;1;929;P. Joannes Gurrea;Amelia;1558-08-30
+18;1;231;P. Antonius Araozius;;
+19;1;932;P. Sanctius Navarrus;Catane;1558-09-01
+20;1;945;P. Alphonsus Ruizius;Grenade;1558-09-09
+21;1;952;P. Josephus Cortesonus;Forlì;1558-09-15
+22;1;954;P. Pantaleo Rodinus;Messine;1558-09-15
+23;1;957;P. Pontius Cogordanus;Assise;1558-09-16
+24;1;958;P. Joannes Baptista Viola;Assise;1558-09-26
+25;1;959;P. Joannes Pelletarius;Ferrare;1558-09-16
+26;1;965;P. Michaël Botellus;Montepulciano;1558-09-18
+27;1;966;P. Antonius de Corduba;Mont Ulia;1558-09-18
+28;1;968;P. Hieronymus Rubiola;Florence;1558-09-20
+29;1;969;P. Edmundus Augerius;Florence;1558-09-20
+30;1;976;P. Michaël Turrianus;Bologne;1558-09-22
+31;1;979;P. Hieronymus Rubiola;Sienne;1558-09-27
+32;1;981;P. Philippus Cassinus;Syracuse;1558-09-29
+33;1;982;P. Ignatius de Acevedo;Lisbonne;1558-09-28
+34;1;983;P. Joannes de la Plaza;Gênes;1558-09-30
+35;1;984;P. Pantaleo Rodinus;Messine;1558-10-01
+36;1;994;P. Hieronymus Domeneccus;Messine;1558-10-18
+37;1;1000;P. Antonius de Corduba;Mont Ulia;1558-10-21
+38;1;1001;P. Ignatius de Acevedo;Lisbonne;1558-11-02
+39;1;1004;P. Ludovicus Coudretus;Annecy;1558-11-03
+40;1;1003;P. Hieronymus Domeneccus;Messine;1558-11-03
+41;1;1010;P. Laurentius Maggius;Brescia;1558-11-09
+42;1;1013;P. Franciscus Henriquius;Lisbonne;1558-11-10
+43;1;1018;P. Hieronymus Bassius;Billom;1558-11-11
+44;1;1025;P. Oliverius Manareus;Lorette;1558-11-12
+45;1;1029;P. Joannes Gambarus;Montepulciano;1558-11-15
+46;1;1030;P. Joannes de Victoria;Prague;1558-11-18
+47;1;1035;P. Ludovicus Coudretus;Annecy;1558-11-23
+48;1;1037;P. Bartholomæus Bustamantius;Tolède;1558-11-29
+49;2;1038;P. Michaël Turrianus;Coimbra;1558-11-29
+50;2;1040;P. Joannes Rethius;Cologne;1558-11-30
+51;2;1044;P. Edmundus Augerius;Padoue;1558-12-02
+52;2;1045;P. Petrus Domeneccus;Grenade;1558-12-02
+53;2;1061;P. Hieronymus Domeneccus;Catane;1558-12-11
+54;2;1062;P. Joannes Baptista Viola;Billom;1558-12-12
+55;2;1063;P. Dominicus Menginus;Piotrków Trybunalski;1558-12-15
+56;2;1067;P. Pontius Cogordanus;Paris;1558-12-20
+57;2;1067bis;P. Paulus Hoffaeus;Prague;1558-12-22
+58;2;1069;P. Michaël Turrianus;Lisbonne;1559-01-12
+59;2;1087;P. Bartholomæus Bustamantius;Tolède;1559-01-20
+60;2;1112bis;P. Joannes Rethius;Cologne;1559-02-08
+61;2;1119;P. Michaël Turrianus;Lisbonne;1559-02-10
+62;2;1121;P. Everardus Mercurianus;Tornaco;1559-02-14
+63;2;1122;P. Ignatius de Acevedo;Lisbonne;1559-02-17
+64;2;1144;P. Ignatius de Acevedo;Lisbonne;1559-03-17
+65;2;1154;P. Antonius de Corduba;Mont Ulia;1559-03-27
+66;2;1156;P. Bartholomæus Bustamantius;Tolède;1559-03-31
+67;2;1163bis;P. Michaël Turrianus;Lisbonne;1559-04-10
+68;2;1171;P. Ignatius de Acevedo;Lisbonne;1559-04-18
+69;2;1172;P. Michaël Turrianus;Lisbonne;1559-04-18
+70;2;1175;P. Michaël Govierno;Barcelone;1559-04-22
+71;2;1175bis;P. Antonius Araozius;Septimancis;1559-04-23
+72;2;1179;P. Joannes Baptista Barma;Valence;1559-05-01
+73;2;1180;P. Pontius Cogordanus;Paris;1559-05-01
+74;2;1183;P. Michaël Turrianus;Lisbonne;1559-05-06
+75;2;1187;P. Joannes de Victoria;Augsbourg;1559-05-10
+76;2;1189;P. Michaël Turrianus;Lisbonne;1559-05-15
+77;2;1192;P. Everardus Mercurianus;Bruxelles;1559-05-22
+78;2;1193;P. Franciscus Borgia;Valladolid;1559-05-22
+79;2;1194;P. Paulus Hoffaeus;Prague;1559-05-30
+80;2;1196;P. Bartholomæus Bustamantius;Grenade;1559-05-31
+81;2;1199;P. Everardus Mercurianus;Bruxelles;1559-06-12
+82;2;1204;P. Joannes Baptista Barma;Billom;1559-06-25
+83;2;1206;P. Bartholomæus Bustamantius;Grenade;1559-06-28
+84;2;1211;P. Pontius Cogordanus;Paris;1559-07-03
+85;2;1216;P. Everardus Mercurianus;Louvain;1559-07-14
+86;2;1219;P. Franciscus de Olea;Plaisance;1559-07-31
+87;2;1220;P. Bartholomæus Bustamantius;Mont Ulia;1559-08-01
+88;2;1221;P. Pontius Cogordanus;Paris;1559-08-02
+89;2;1235;P. Joannes Suárez;Séville;1559-08-24
+90;2;1240;P. Bartholomæus Bustamantius;Mont Ulia;1559-08-31
+91;2;1241;P. Michaël Turrianus;Lisbonne;1559-09-04
+92;2;1243;P. Christophorus Rodericius;Avignon;1559-09-14
+93;2;1249;P. Joannes Baptista Barma;Saragosse;1559-09-20
+94;2;1250;P. Bartholomæus Bustamantius;Mont Ulia;1559-09-22
+95;2;1253;P. Joannes Suárez;Séville;1559-10-20
+96;2;1256;P. Antonius Araozius;Valladolid;1559-10-28
+97;2;1257;P. Edmundus Augerius;Pamiers;1559-10-28
+98;2;1258;P. Antonius de Corduba;Mont Ulia;1559-10-30
+99;2;1263;P. Balthasar Pinnas;Sassari;1559-11-20
+100;2;1264;P. Joannes Baptista Barma;Barcelone;1559-11-22
+101;2;1266;P. Joannes Suárez;Séville;1559-11-29
+102;2;1279;P. Bartholomæus Bustamantius;Séville;1559-12-20
+103;2;1284;P. Everardus Mercurianus;Tornaco;1559-12-30
+104;2;1285;P. Bartholomæus Bustamantius;Séville;1559-12-30
+105;2;1286;P. Theodoricus Canisius;Augsbourg;1559-12-30
+106;2;1289;P. Joannes Suárez;Séville;1560-01-06
+107;2;1293;P. Antonius Araozius;Valladolid;1560-01-07
+108;2;1294;P. Balthasar Pinnas;Sassari;1560-01-08
+109;2;1297;P. Christophorus Rodericius;Vienne;1560-01-12
+110;2;1298;P. Michaël Turrianus;Lisbonne;1560-01-12
+111;2;1302;P. Everardus Mercurianus;Louvain;1560-01-23
+112;2;1308;P. Michaël Turrianus;Lisbonne;1560-02-04
+113;2;1318;P. Joannes Baptista Ribera;Tolède;1560-02-19
+114;2;1322;P. Everardus Mercurianus;Louvain;1560-02-24
+115;2;1323;P. Franciscus Antonius;Sassari;1560-03-05
+116;2;1328;P. Antonius de Corduba;Mont Ulia;1560-03-05
+117;3;1334;P. Theodoricus Canisius;Munich;1560-03-27
+118;3;1335;P. Michaël Turrianus;Lisbonne;1560-04-04
+119;3;1336;P. Joannes de Victoria;Vienne;1560-04-08
+120;3;1337;P. Consalvius de Camara;Lisbonne;1560-04-10
+121;3;1338;P. Michaël Turrianus;Lisbonne;1560-04-14
+122;3;1339;P. Ludovicus Herrera;Évora;1560-04-17
+123;3;1340;P. Christophorus Rodericius;Vienne;1560-04-18
+124;3;1348;P. Petrus Martínez;Tolède;1560-05-04
+125;3;1349;P. Leonardus Kesselius;Cologne;1560-05-07
+126;3;1353;P. Nicolaus Lanojus;Vienne;1560-05-17
+127;3;1361;P. Joannes Suárez;Séville;1560-05-31
+128;3;1361bis;P. Pontius Cogordanus;Paris;1560-06- 02
+129;3;1362;P. Everardus Mercurianus;Cologne;1560-06-07
+130;3;1370;P. Pontius Cogordanus;Chateaudun;1560-06-15
+131;3;1371;P. Nicolaus Lanojus;Innsbruck;1560-06-19
+132;3;1375;P. Pontius Cogordanus;Paris;560-07-3/17
+133;3;1375bis;P. Leonardus Kesselius;Cologne;1560-07-05
+134;3;1376;P. Everardus Mercurianus;Trèves;1560-07-09
+135;3;1378;P. Michaël Turrianus;Lisbonne;1560-07-11
+136;3;1381;P. Ferdinandus Jaén;Cordoue;1560-07-16
+137;3;1382;P. Pontius Cogordanus;Paris;1560-07-16
+138;3;1383;P. Joannes de Victoria;Vienne;1560-07-19
+139;3;1386;P. Consalvius de Camara;Lisbonne;1560-07
+140;3;1388;P. Michaël Turrianus;Lisbonne;1560-08-07
+141;3;1390;P. Everardus Mercurianus;Trèves;1560-08-12
+142;3;1395;P. Bartholomæus Bustamantius;Porto;1560-08-14
+143;3;1398;P. Joannes Rogel;Tolède;1560-08-20
+144;3;1403;P. Christophorus Rodericius;Rome;1560-08-31
+145;3;1407;P. Michaël Turrianus;Lisbonne;1560-09-13
+146;3;1412;P. Balthasar Pinnas;Sassari;1560-09-20
+147;3;412bis;P. Adrianus Adriani;Louvain;1560-09-20
+148;3;1413bis;P. Pontius Cogordanus;Paris;1560-10-8/22
+149;3;1416bis;P. Ludovicus Coudretus;Lyon;1560-10-10
+150;3;1417;P. Antonius de Corduba;Mont Ulia;1560-10-14
+151;3;1422;P. Consalvius de Camara;Lisbonne;1560-10-26
+152;3;1425;P. Michaël Turrianus;Lisbonne;1560-10-30
+153;3;1429;P. Joannes de Victoria;Vienne;1560-11-17
+154;3;1432;P. Bartholomæus Bustamantius;Porto;1560-11-26
+155;3;1434;P. Pontius Cogordanus;Paris;1560-12-02
+156;3;1440;P. Everardus Mercurianus;Trèves;1560-12-17
+157;3;1444;P. Petrus Domeneccus;Tolède;1561-12-30
+158;3;1451;P. Antonius Vinckius;Trèves;1561-01-14
+159;3;1454;P. Michaël Turrianus;Lisbonne;1561-01-24
+160;3;1464;P. Antonius Cordeses;Valence;1561-02-27
+161;3;1466;P. Michaël Turrianus;Lisbonne;1561-02-28
+162;3;1469;P. Pontius Cogordanus;Paris;1561-03-02
+163;3;1472;P. Everardus Mercurianus;Cologne;1561-03-07
+164;3;1473;P. Joannes de Victoria;Vienne;1561-03-08
+165;3;1480;P. Consalvius de Camara;Lisbonne;1561-03-19
+166;3;1481;P. Michaël Turrianus;Lisbonne;1561-03-22
+167;3;1484;P. Ludovicus Coudretus;Barcelone;1561-03-24
+168;3;1487;P. Hurtadus Pérez;Augsbourg;1561-04-05
+169;3;1491;P. Pontius Cogordanus;Paris;1561-04-2/20
+170;3;1491bis;P. Everardus Mercurianus;Cologne;1561-04-16
+171;3;1493;P. Consalvius de Camara;Lisbonne;1561-4-26
+172;3;1494;P. Antonius Vinckius;Trèves;1561-04-27
+173;3;1495;P. Pontius Cogordanus;Paris;1561-05-01
+174;3;1497bis;P. Edmundus Augerius;Tournon;1561-05-07
+175;3;1498;P. Joannes Pelletarius;Paris;1561-05-10
+176;3;1501;P. Joannes Baptista Viola;Lyon;1561-05-11
+177;3;1521;P. Joannes Seldius;Trnava;1561-06-10
+178;3;1524;P. Ignatius de Acevedo;Braga;1561-06-12
+179;3;1527;P. Guido Roiletus;Billom;1561-06-15
+180;3;1537;P. Christophorus Madridius;Rome;1561-07-04
+181;3;1543;P. Petrus de la Peña;Salamanque;1561-07-07
+182;3;1544;P. Christophorus Madridius;Rome;1561-07-09
+183;3;1546;P. Ferdinandus Alcarazius;Salamanque;1561-07-10
+184;3;1548;P. Christophorus Madridius;Rome;1561-07-11
+185;3;1551;P. Antonius Cordeses;Bologne;1561-07-20
+186;3;1553;P. Balthasar Pinnas;Sassari;1561-07-21
+187;3;1554;P. Christophorus Madridius;Rome;1561-07-25
+188;3;1557;P. Paulus Hoffaeus;Prague;1561-07-29
+189;4;1569;P. Christophorus Madridius;Rome;1561-08-16
+190;4;1571;P. Christophorus Madridius;Rome;1561-08-25
+191;4;1576;P. Alphonsus Salmero;Rome;1561-09-17
+192;4;1578;P. Paulus Hoffaeus;Prague;1561-09-26
+193;4;1582;P. Alphonsus Salmero;Rome;1561-09-29
+194;4;1598;P. Paulus Hoffaeus;Prague;1561-10-31
+195;4;1610;P. Christophorus Madridius;Rome;1561-11-23
+196;4;1620;P. Christophorus Madridius;Rome;1561-12-08
+197;4;1621;P. Christophorus Rodericius;Le Caire;1561-12-10
+198;4;1630;P. Bartholomæus Hernández;Salamanque;1562-01-01
+199;4;1631;P. Alphonsus Salmero;Rome;1562-01-04
+200;4;1633;P. Christophorus Rodericius;Le Caire;1562-01-25
+201;4;1635;P. Franciscus Petrarcha;Rome;1562-01-27
+202;4;1639;P. Gundisalvus Vaz;Coimbra;1562-03-01
+203;4;1640;P. Leo Henriquius;Évora;1562-03-03
+204;4;1644;P. Christophorus Rodericius;Le Caire;1562-04-07
+205;4;1647;P. Edmundus Augerius;Tournon;1562-04-10
+206;4;1654;P. Christophorus Rodericius;Alexandrie;1562-05-21
+207;4;1655;P. Joannes Rogerius;Toulouse;1562-05-21
+208;4;1659;P. Joannes Ramirius;Valence;1562-07-30
+209;4;1660;P. Christophorus Rodericius;Le Caire;1562-08-09
+210;4;1669;P. Gundisalvus Vaz;Braga;1562-08-25
+211;4;1676;P. Antonius Cordeses;Barcelone;1562-09-12
+212;4;1683;P. Pontius Cogordanus;Nouvion;1562-09-29
+213;4;1686;P. Christophorus Rodericius;Alexandrie;1562-10-09
+214;5;1896;P. Edmundus Augerius;Lyon;1563-08-09
+215;5;1915;P. Antonius Monserratus;Lisbonne;1563-09-01
+216;5;1921;P. Jacobus Schipman;Louvain;1563-09-12
+217;5;1935;P. Joannes Fernandez;Valladolid;1563-09-29
+218;5;1950;P. Edmundus Augerius;Lyon;1563-10-17
+219;5;1951;P. Vincentius Bru;Gandie;1563-10-17
+220;5;1968;P. Edmundus Augerius;Lyon;1563-11-07
+221;5;1969;P. Gundisalvus Alvares;Coimbra;1563-11-08
+222;5;1971;P. Ignatius de Acevedo;Braga;1563-11-10
+223;5;1972;P. Petrus Parra;Lisbonne;1563-11-12
+224;5;1987;P. Oliverius Manareus;Billom;1563-11-29
+225;5;1998;P. Ignatius de Acevedo;Braga;1563-12-09
+226;5;2000;P. Dionysius Vázquez;Anvers;1563-12-11
+227;5;2001;P. Martialis Vasaeus;Anvers;1563-12-11
+228;5;2006;P. Oliverius Manareus;Lyon;1563-12-28
+229;5;2008;P. Edmundus Augerius;Lyon;1564-01-01
+230;5;2009;P. Edmundus Augerius;Lyon;1564-01-01
+231;5;2011;P. Edmundus Augerius;Lyon;1564-01-17
+232;5;2014;P. Antonius Araozius;Valladolid;1564-01-30
+233;5;2022;P. Pontius Cogordanus;Paris;1564-02-23
+234;5;2023;P. Balthasar Hostovinus;Varsovie;1564-02-26
+235;5;2024;P. Joannes de la Plaza;Séville;1564-03-02
+236;5;2031;P. Oliverius Manareus;Toulouse;1564-03-12
+237;5;2032;P. Joannes Ramirius;Salamanque;1564-03-12
+238;5;2035;P. Pontius Cogordanus;Paris;1564-03-16
+239;5;2038;P. Gaspar Alvarezius;Lisbonne;1564-03-27
+240;5;2039;P. Edmundus Augerius;Lyon;1564-03-28
+241;5;2045;P. Eleutherius Pontanus;Cambrai;1564-04-06
+242;5;2046;P. Leonardus Kesselius;Cologne;1564-04-07
+243;5;2050;P. Lucius Crucius;Venise;1564-04-15
+244;5;2058;P. Balthasar Hostovinus;Varsovie;1564-04-22
+245;6;2059;P. Edmundus Augerius;Lyon;1564-04-25
+246;6;2073;P. Jacobus Schipman;Louvain;1564-06-07
+247;6;2076;P. Edmundus Augerius;Lyon;1564-06-18
+248;6;2078;P. Joannes Suárez;Salamanque;1564-06-23
+249;6;2084;P. Everardus Mercurianus;Tornaco;1564-06-27
+250;6;2097;P. Oliverius Manareus;Paris;1564-07-10
+251;6;2103;P. Pontius Cogordanus;Paris;1564-07-12
+252;6;2108;P. Oliverius Manareus;Paris;1564-07-20
+253;6;2122;P. Joannes Ramirius;Salamanque;1564-08-05
+254;6;2124;P. Balthasar Hostovinus;Tykoczino;1564-08-06
+255;6;2135;P. Antonius Araozius;Madrid;1564-08-31
+256;6;2137;P. Joannes Ramirius;Salamanque;1564-09-02
+257;6;2166;P. Antonius Araozius;Madrid;1564-09-23
+258;6;2176;P. Ignatius de Acevedo;Braga;1564-10-12
+259;6;2179;P. Antonius Araozius;Madrid;1564-10-17
+260;6;2188;P. Didacus Miro;Lisbonne;1564-10-19
+261;6;2189;P. Marcellus Vaaz;Paris;1564-10-20
+262;6;2191;P. Joannes Maldonatus;Paris;1564-10-25
+263;6;2193;P. Emmanuel Alvarez;Coimbra;1564-10-31
+264;6;2200;P. Didacus de Cetina;Tolède;1564-11-12
+265;6;2204;P. Georgius Scorichius;Ingolstadt;1564-11-16
+266;6;2205;P. Ignatius de Acevedo;Braga;1564-11-17
+267;6;2206;P. Leonardus Kesselius;Cologne;1564-11-18
+268;6;2209;P. Maximillianus Capella;Tornaco;1564-11-24
+269;6;2215;P. Balthasar Pinnas;Cagliari;1564-12-04
+270;6;2218;P. Balthasar Hostovinus;Walboria;1564-12-20
+271;6;2222;P. Petrus Rodericius;Plaisance;1564-12-31
+272;6;2223;P. Joannes de Castañeda;Plaisance;1565-01-03
+273;6;2225;P. Gaspar Hernández;Naples;1565-01-06
+274;6;S34;P. Strada;Vilabertrán;1558-06-01
+275;6;S35;P. Boucletus;Tornaco;1558-06-07
+276;6;S36;P. Joannes de Victoria;Vienne;1558-07-04
+277;6;S38;P. Antonius Araozius;Saragosse;1558-07-20
+278;6;S39;P. Joannes de Victoria;Vienne;1558-08-12
+279;6;S40;P. Joannes de Victoria;Vienne;1558-10-04
+280;6;S41;P. Bartholomæus Bustamantius;Tolède;1558-10-29
+281;6;S42;P. Gundisalvus Vaz;Burgos;1558-11-03
+282;6;S43;P. Antonius Araozius;Ognato;1558-11-15
+283;6;S44;P. Bartholomæus Bustamantius;Tolède;1558-11-29
+284;6;S45;P. Nicolaus Lanojus;Ingolstadt;1558-12-4/5/27
+285;6;S46;P. Bartholomæus Bustamantius;Tolède;1558-12-15
+286;6;S52;P. Leonardus Kesselius;Cologne;1559-08-02
+287;6;S57;P. Godinus;Lisbonne;1560-04-30
+288;6;S92;P. Oliverius Manareus;Paris;1564-07 11
+289;6;S93;P. Costerus;Cologne;1565-01-24
+290;7;147;P. Franciscus Borgia;Valladolid;1558-08/09
+291;7;148;P. Franciscus Borgia;Valladolid;1558-10-25
+292;7;149;P. Franciscus Borgia;Valladolid;1558-10-29
+293;7;150;P. Franciscus Borgia;Valladolid;1558-11-18
+294;7;151;P. Franciscus Borgia;Valladolid;1558-11-25
+295;7;152;P. Franciscus Borgia;Valladolid;1558-12-29
+296;7;156;P. Franciscus Borgia;Valladolid;1559-02-21
+297;7;157;P. Franciscus Borgia;Valladolid;1559-02-21
+298;7;158;P. Franciscus Borgia;Valladolid;1559-02-21
+299;7;161;P. Franciscus Borgia;Valladolid;1559-03-07
+300;7;163;P. Franciscus Borgia;Valladolid;1559-03-18
+301;7;164;P. Franciscus Borgia;Valladolid;1559-03-18
+302;7;165;P. Franciscus Borgia;Valladolid;1559-03-18
+303;7;166;P. Franciscus Borgia;Valladolid;1559-03-26
+304;7;167;P. Franciscus Borgia;Valladolid;1559-03-28
+305;7;169;P. Franciscus Borgia;Septimancis;1559-04-23
+306;7;170;P. Franciscus Borgia;Septimancis;1559-04-23
+307;7;172;P. Franciscus Borgia;Septimancis;1559-05-07
+308;7;173;P. Franciscus Borgia;Valladolid;1559-05-31
+309;7;174;P. Franciscus Borgia;Valladolid;1559-06-09/16
+310;7;175;P. Franciscus Borgia;Valladolid;1559-06-16
+311;7;177;P. Franciscus Borgia;Valladolid;1559-06-16
+312;7;178;P. Franciscus Borgia;Valladolid;1559-06-29
+313;7;179;P. Franciscus Borgia;Valladolid;1559-06-29
+314;7;180;P. Franciscus Borgia;Septimancis;1559-07-14
+315;7;181;P. Franciscus Borgia;Septimancis;1559-07-15
+316;7;182;P. Franciscus Borgia;Septimancis;1559-07-18
+317;7;186;P. Franciscus Borgia;Valladolid;1559-08-02
+318;7;190;P. Franciscus Borgia;Medina del Campo;1559-09-08
+319;7;202;P. Franciscus Borgia;Évora;1560-04-22
+320;7;248;P. Franciscus Borgia;Toscolano;1564-05-23
+321;7;250;P. Franciscus Borgia;Toscolano;1564-06-06
+322;7;254;P. Franciscus Borgia;Toscolano;1564-09-12
+323;8;EB70;P. Christophorus Rodericius;Lorette;1558-10-15
+324;8;EB71;P. Christophorus Rodericius;Murazzo;1558-12-08
+325;8;EB73;P. Christophorus Rodericius;Venise;1559-04-15
+326;8;EB74;P. Christophorus Rodericius;Padoue;1559-06-02
+327;8;EB75;P. Christophorus Rodericius;Padoue;1559-07-28
+328;8;EB76;P. Christophorus Rodericius;Padoue;1561-05-16
+329;8;EB88;P. Christophorus Rodericius;Gênes;1563-08-20
+330;8;EB92;P. Christophorus Rodericius;Gênes;1564-06-23
+331;9;SI86;P. Alphonsus Salmero;Naples;1558-10-01
+332;9;SI87;P. Alphonsus Salmero;Naples;1558-10-09
+333;9;SI88;P. Alphonsus Salmero;Naples;1558-10-15
+334;9;SI89;P. Alphonsus Salmero;Naples;1558-10-22
+335;9;SI90;P. Alphonsus Salmero;Naples;1558-10-29
+336;9;SI91;P. Alphonsus Salmero;Naples;1558-11-05
+337;9;SI92;P. Alphonsus Salmero;Naples;1558-11-12
+338;9;SI93;P. Alphonsus Salmero;Naples;1558-11-19
+339;9;SI94;P. Alphonsus Salmero;Naples;1558-11-24
+340;9;SI98;P. Alphonsus Salmero;Naples;1559-01-01
+341;9;SI99;P. Alphonsus Salmero;Naples;1559-01-28
+342;9;SI101;P. Alphonsus Salmero;Naples;1559-02-25
+343;9;SI103;P. Alphonsus Salmero;Naples;1559-04-29
+344;9;SI104;P. Alphonsus Salmero;Naples;1559-05-12
+345;9;SI106;P. Alphonsus Salmero;Naples;1559-06-17
+346;9;SI107;P. Alphonsus Salmero;Naples;1559-06-24
+347;9;SI108;P. Alphonsus Salmero;Naples;1559-07-01
+348;9;SI110;P. Alphonsus Salmero;Naples;1559-07-22
+349;9;SI112;P. Alphonsus Salmero;Naples;1559-07
+350;9;SI114;P. Alphonsus Salmero;Naples;1559-08-19
+351;9;SI116;P. Alphonsus Salmero;Naples;1559-09-16
+352;9;SI117;P. Alphonsus Salmero;Naples;1559-09-23
+353;9;SI118;P. Alphonsus Salmero;Naples;1559-10-07
+354;9;SI119;P. Alphonsus Salmero;Naples;1559-10-09
+355;9;SI121;P. Alphonsus Salmero;Naples;1559-10-21
+356;9;SI122;P. Alphonsus Salmero;Naples;1559-10-29
+357;9;SI123;P. Alphonsus Salmero;Naples;1559-11-05
+358;9;SI124;P. Alphonsus Salmero;Naples;1559-11-11
+359;9;SI126;P. Alphonsus Salmero;Naples;1559-12-10
+360;9;SI127;P. Alphonsus Salmero;Naples;1559-12-17
+361;9;SI128;P. Alphonsus Salmero;Naples;1560-01-06
+362;9;SI129;P. Alphonsus Salmero;Naples;1560-01-20
+363;9;SI130;P. Alphonsus Salmero;Naples;1560-02-01
+364;9;SI131;P. Alphonsus Salmero;Naples;1560-02-05
+365;9;SI132;P. Alphonsus Salmero;Naples;1560-02-04
+366;9;SI137;P. Alphonsus Salmero;Naples;1560-05-12
+367;9;SI138;P. Alphonsus Salmero;Naples;1560-05-19
+368;9;SI139;P. Alphonsus Salmero;Naples;1560-05-25
+369;9;SI140;P. Alphonsus Salmero;Naples;1560-06-01
+370;9;SI141;P. Alphonsus Salmero;Naples;1560-06-08
+371;9;SI142;P. Alphonsus Salmero;Naples;1560-06-18
+372;9;SI143;P. Alphonsus Salmero;Naples;1560-06-23
+373;9;SI144;P. Alphonsus Salmero;Naples;1560-06-30
+374;9;SI145;P. Alphonsus Salmero;Naples;1560-07-06
+375;9;SI146;P. Alphonsus Salmero;Naples;1560-07-14
+376;9;SI147;P. Alphonsus Salmero;Naples;1560-07-28
+377;9;SI148;P. Alphonsus Salmero;Naples;1560-08-04
+378;9;SI149;P. Alphonsus Salmero;Naples;1560-08-10
+379;9;SI150;P. Alphonsus Salmero;Naples;1560-08-18
+380;9;SI151;P. Alphonsus Salmero;Naples;1560-08-31
+381;9;SI152;P. Alphonsus Salmero;Naples;1560-09-07
+382;9;SI153;P. Alphonsus Salmero;Naples;1560-09-14
+383;9;SI154;P. Alphonsus Salmero;Naples;1560-09-22
+384;9;SI155;P. Alphonsus Salmero;Naples;1560-10-06
+385;9;SI156;P. Alphonsus Salmero;Naples;1560-10-17
+386;9;SI158;P. Alphonsus Salmero;Naples;1560-10-27
+387;9;SI158b;P. Alphonsus Salmero;Naples;1560-11-03
+388;9;SISI160;P. Alphonsus Salmero;Naples;1560-11-03
+389;9;SI161;P. Alphonsus Salmero;Naples;1560-11-08
+390;9;SI163;P. Alphonsus Salmero;Naples;1560-11-16
+391;9;SI163b;P. Alphonsus Salmero;Naples;1560-11-23
+392;9;SI164;P. Alphonsus Salmero;Naples;1560-12-01
+393;9;SI165;P. Alphonsus Salmero;Naples;1560-12-28
+394;9;SI166;P. Alphonsus Salmero;Naples;1561-01-12
+395;9;SI167;P. Alphonsus Salmero;Naples;1561-01-18
+396;9;SI168;P. Alphonsus Salmero;Naples;1561-02-16
+397;9;SI169;P. Alphonsus Salmero;Naples;1561-03-13
+398;9;SI170;P. Alphonsus Salmero;Naples;1561-03-31
+399;9;SI171;P. Alphonsus Salmero;Naples;1561-04-07
+400;9;SI172;P. Alphonsus Salmero;Naples;1561-04
+401;9;SI173;P. Alphonsus Salmero;Naples;1561-04-27
+402;9;SI174;P. Alphonsus Salmero;Naples;1561-05-04
+403;9;SI175;P. Alphonsus Salmero;Naples;1561-05
+404;9;SI176;P. Alphonsus Salmero;Naples;1561-05-17
+405;9;SI177;P. Alphonsus Salmero;Naples;1561-05-24
+406;9;SI178;P. Alphonsus Salmero;Naples;1561-05-31
+407;9;SI179;P. Alphonsus Salmero;Naples;1561-06-15
+408;9;SI180;P. Alphonsus Salmero;Naples;1561-06-22
+409;9;SI181;P. Alphonsus Salmero;Naples;1561-07-06
+410;9;SI186;P. Alphonsus Salmero;Naples;1561-08-13
+411;9;SI202;P. Alphonsus Salmero;Venise;1564-02-19
+412;9;SI203;P. Alphonsus Salmero;Venise;1564-02-26
+413;9;SI204;P. Alphonsus Salmero;Venise;1564-03-09
+414;9;SI205;P. Alphonsus Salmero;Venise;1564-03-28
+415;9;SI206;P. Alphonsus Salmero;Venise;1564-04-08
+416;9;SI208;P. Alphonsus Salmero;Naples;1564-06
+417;9;SI209;P. Alphonsus Salmero;Naples;1564-06-11
+418;9;SI210;P. Alphonsus Salmero;Naples;1564-06_25
+419;9;SI211;P. Alphonsus Salmero;Naples;1564-07-02
+420;9;SI213;P. Alphonsus Salmero;Naples;1564-07
+421;9;SI214;P. Alphonsus Salmero;Naples;1564-07-16
+422;9;SI216;P. Alphonsus Salmero;Naples;1564-08-06
+423;9;SI217;P. Alphonsus Salmero;Naples;1564-08-13
+424;9;SI218;P. Alphonsus Salmero;Naples;1564-08-20
+425;9;SI219;P. Alphonsus Salmero;Naples;1564-08-28
+426;9;SI220;P. Alphonsus Salmero;Naples;1564-09-10
+427;9;SI221;P. Alphonsus Salmero;Naples;1564-09
+428;9;SI222;P. Alphonsus Salmero;Naples;1564-09-24
+429;9;SI223;P. Alphonsus Salmero;Naples;1564-10-01
+430;9;SI224;P. Alphonsus Salmero;Naples;1564-10-08
+431;9;SI226;P. Alphonsus Salmero;Naples;1564-10-08
+432;9;SI227;P. Alphonsus Salmero;Naples;1564-10-21
+433;9;SI228;P. Alphonsus Salmero;Naples;1564-10-22
+434;9;SI229;P. Alphonsus Salmero;Naples;1564-10-29
+435;9;SI230;P. Alphonsus Salmero;Naples;1564-11-05
+436;9;SI231;P. Alphonsus Salmero;Naples;1564-11-12
+437;9;SI232;P. Alphonsus Salmero;Naples;1564-11-19
+438;9;SI233;P. Alphonsus Salmero;Naples;1564-11-25
+439;9;SI234;P. Alphonsus Salmero;Naples;1564-12-03
+440;9;SI235;P. Alphonsus Salmero;Naples;1564-12-03
+441;9;SI236;P. Alphonsus Salmero;Naples;1564-12-03
+442;9;SI238;P. Alphonsus Salmero;Naples;1564-12-23
+443;9;SI240;P. Alphonsus Salmero;Naples;1565-01-14
+444;10;PR116;P. Petrus Ribadeneira;Bruxelles;1558-07-21
+445;10;PR118;P. Petrus Ribadeneira;Londre;1559-01-06
+446;10;PR119;P. Petrus Ribadeneira;Londre;1559-01-20
+447;10;PR122;P. Petrus Ribadeneira;Bruxelles;1559-04-01
+448;10;PR132;P. Petrus Ribadeneira;Montepulciano;1560-12-22
+449;10;PR133;P. Petrus Ribadeneira;Sienne;1560-12-29
+450;10;PR134;P. Petrus Ribadeneira;Gênes;1561-01-10
+451;10;PR136;P. Petrus Ribadeneira;Gênes;1561-01-17
+452;10;PR141;P. Petrus Ribadeneira;Gênes;1561-03-22
+453;10;PR142;P. Petrus Ribadeneira;Gênes;1561-04-25
+454;10;PR143;P. Petrus Ribadeneira;Gênes;1561-05-02
+455;10;PR145;P. Petrus Ribadeneira;Florence;1561-06-07
+456;10;PR146;P. Petrus Ribadeneira;Sienne;1561-06-29
+457;10;PR153;P. Petrus Ribadeneira;Macerata;1561-08-19
+458;10;PR154;P. Petrus Ribadeneira;Macerata;1561-08
+459;10;PR155;P. Petrus Ribadeneira;Lorette;1561-08-26
+460;10;PR188;P. Petrus Ribadeneira;Palerme;1563-03-20
+461;10;PR193;P. Petrus Ribadeneira;Messine;1563-06-18
+462;10;PR202;P. Petrus Ribadeneira;Palerme;1564-01-04
+463;10;PR206;P. Petrus Ribadeneira;Palerme;1564-04-21
+464;10;PR212;P. Petrus Ribadeneira;Messine;1564-09-20
+465;10;PR213;P. Petrus Ribadeneira;Messine;1564-10-18
+466;10;PR214;P. Petrus Ribadeneira;Messine;1564-10-30
+467;10;PR215;P. Petrus Ribadeneira;Messine;1564-11-13
+468;10;PR216;P. Petrus Ribadeneira;Messine;1564-11-21
+469;10;PR217;P. Petrus Ribadeneira;Messine;1564-12-06
+470;10;PR218;P. Petrus Ribadeneira;Messine;1565-01-23
+471;10;PR222;P. Petrus Ribadeneira;Palerme;1565-02-07
+472;11;NII99;P. Hieronymus Natalis;Barcelone;1561-01-04
+473;11;NII103;P. Hieronymus Natalis;Cuenca;1561-02-12
+474;11;NII108;P. Hieronymus Natalis;Tolède;1561-03-03
+475;11;NII109;P. Hieronymus Natalis;Tolède;1561-03-03
+476;11;NII112;P. Hieronymus Natalis;Tolède;1561-03-08
+477;11;NII113;P. Hieronymus Natalis;Tolède;1561-03-10
+478;11;NII115;P. Hieronymus Natalis;Tolède;1561-03-18
+479;11;NII116;P. Hieronymus Natalis;Porto;1561-04-09
+480;11;NII117;P. Hieronymus Natalis;Porto;1561-04-09
+481;11;NII123;P. Hieronymus Natalis;Monte Regio;1561-05-04
+482;11;NII130;P. Hieronymus Natalis;Coimbra;1561-06-02
+483;11;NII131;P. Hieronymus Natalis;Coimbra;1561-06-02
+484;11;NII135;P. Hieronymus Natalis;Coimbra;1561-06-16
+485;11;NII137;P. Hieronymus Natalis;Coimbra;1561-07-13
+486;11;NII144;P. Hieronymus Natalis;Lisbonne;1561-08-25
+487;11;NII150;P. Hieronymus Natalis;Alcalá de Henares;1561-10-27
+488;11;NII151;P. Hieronymus Natalis;Alcalá de Henares;1561-10-28
+489;11;NII152;P. Hieronymus Natalis;Alcalá de Henares;1561-10-29
+490;11;NII184;P. Hieronymus Natalis;Alcalá de Henares;1562-02-22
+491;12;NIII206;P. Hieronymus Natalis;Louvain;1562-07-12
+492;12;NIII214;P. Hieronymus Natalis;Mainz;1562-09
+493;12;NIII227;P. Hieronymus Natalis;Innsbruck;1562-11-20
+494;12;NIII231;P. Hieronymus Natalis;Innsbruck;1562-11-27
+495;12;NIII252;P. Hieronymus Natalis;Innsbruck;1563-02
+496;12;NIII256;P. Hieronymus Natalis;Innsbruck;1563-02-27
+497;12;NIII259;P. Hieronymus Natalis;Innsbruck;1563-03-09
+498;12;NIII271;P. Hieronymus Natalis;Trnava;1563-04
+499;12;NIII275;P. Hieronymus Natalis;Vienne;1563-05-06/07
+500;12;NIII278;P. Hieronymus Natalis;Prague;1563-05-19
+501;12;NIII279;P. Hieronymus Natalis;Prague;1563-05
+502;12;NIII291;P. Hieronymus Natalis;Vienne;1563-07
+503;12;NIII299;P. Hieronymus Natalis;Vienne;1563-08
+504;12;NIII303;P. Hieronymus Natalis;Vienne;1563-08
+505;12;NIII308;P. Hieronymus Natalis;Munich;1563-09
+506;12;NIII318;P. Hieronymus Natalis;Innsbruck;1563-10
+507;12;NIII324;P. Hieronymus Natalis;Dilligen-sur-le-Danube;1563-10-22
+508;12;NIII326;P. Hieronymus Natalis;Dilligen-sur-le-Danube;1563-10-28
+509;12;NIII328;P. Hieronymus Natalis;Dilligen-sur-le-Danube;1563-11

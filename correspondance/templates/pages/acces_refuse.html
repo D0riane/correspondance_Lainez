@@ -1,0 +1,10 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if lettre %}| Lettre : {{lettre.numero_lettre}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+<p>Les modifications de notre base de donnée sont réservées aux inscrits. <br>
+    Vous pouvez vous connecter <a href="{{url_for('connexion')}}">ici</a> ou vous inscrire <a href="{{url_for('inscription')}}">ici</a></p>
+{% endblock %}

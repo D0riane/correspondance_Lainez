@@ -1,0 +1,63 @@
+{% extends "conteneur.html" %}
+
+{% block corps %}
+
+    {% if transcription %}
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <h3>Transcription de la lettre {{transcription.transcription_lettre_id}}</h3>
+            </th>
+            <th>
+                <a class="btn btn-outline-danger" role="button" href="{{url_for('suppression_transcription', transcription_id =transcription.transcription_id)}}">Supprimer cette transcription</a>
+                <a class="btn btn-outline-success" role="button" href="{{url_for('modification_transcription', transcription_id = transcription.transcription_id)}}">Modifier cette transcription</a>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>
+                <p>
+                    {% if transcription %}
+                    {{transcription.transcription_texte}}
+                    {% endif %}
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><small><em>
+                    {% if transcription.transcription_id %}
+                    Transcription proposée par
+                    {% if utilisateur.ut_id %}
+                    {{utilisateur.ut_nom}}
+                    {% endif %}
+                    (dernière modification le {{transcrire.transcrire_date}})
+                    {% endif %}
+                </em></small></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+    {% else %}
+
+<p>La base de données est en cours de constitution</p>
+
+    {% endif %}
+
+<div>
+    <br/>
+        <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+        <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+    <br/>
+    <br/>
+    <br/>
+</div>
+
+{% endblock %}

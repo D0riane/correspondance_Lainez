@@ -1,0 +1,22 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Suppression d'une lettre{%endblock%}
+
+{% block corps %}
+<br/>
+<header>
+	<h3>Supprimer une lettre</h3>
+</header>
+
+	<div>
+		{% if lettre %}
+	   <p>Êtes-vous certain.e de vouloir supprimer cette lettre ?</p>
+		<form method="POST" action="{{url_for('suppression_lettre', lettre_id = lettre.lettre_id)}}" style="text-align:center">
+			<div>
+				<button type="submit" class="btn btn-primary">Je confirme</button>
+			</div>
+ 		</form>
+		 <p><a href="{{url_for('lettres', lettre_id = lettre.lettre_id)}}">Retour</a></p>
+		{% endif %}
+	</div>
+{% endblock %}

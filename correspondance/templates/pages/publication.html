@@ -1,0 +1,27 @@
+{% extends "conteneur.html" %}
+
+{% block afternav %}
+    {% include "partials/recherche.html" %}
+{%endblock%}
+
+{%block corps%}
+<h3>Les sources</h3>
+        {% if publications %}
+        <p>La base de données rassemble les données de {{publications|length}} ouvrages de la MHSI :
+        <ul>
+        {% for publication in publications %}
+        <li>
+                {{publication.publication_titre}}
+                {% if publication.publication_volume %}
+                (Volume {{publication.publication_volume}})
+                {% endif %}
+        </li>
+        {% endfor %}
+        </ul>
+        </p>
+        {% else %}
+        <p>La base de données est en cours de constitution</p>
+        {% endif %}
+        <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+
+{%endblock%}

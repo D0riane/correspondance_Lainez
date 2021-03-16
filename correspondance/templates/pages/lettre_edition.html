@@ -1,0 +1,44 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+
+{% endblock %}
+
+
+
+{% block corps %}
+
+<h1>Formulaire d'édition</h1>
+
+<form method="post" action="{{url_for('edition', lettre_id=lettre_modifiee.lettre_id)}}" class="">
+    <div>
+        <label for="champs_ref">Référence bibliographique : </label>
+        <input type="text" name="lettre_volume" placeholder="Référence bibliographique" id="champs_ref" value="{{lettre_modifiee.lettre_volume}}">
+    </div>
+
+    <div>
+        <label for="champs_num">Numéro de la  lettre : </label>
+        <input type="text" name="lettre_numero" placeholder="Identifiant de la lettre" id="champs_num" value="{{lettre_modifiee.lettre_numero}}">
+    </div>
+
+    <div>
+        <label for="champs_auteur">Rédacteur : </label>
+        <input type="text" name="lettre_redacteur" placeholder="Auteur de la lettre" id="champs_auteur" value="{{lettre_modifiee.lettre_redacteur}}">
+    </div>
+
+    <div>
+        <label for="champs_lieu">Lieu d'envoi : </label>
+        <input type="text" name="lettre_lieu" placeholder="Lieu d'envoi de la lettre" id="champs_lieu" value="{{lettre_modifiee.lettre_lieu}}">
+    </div>
+
+    <div>
+        <label for="champs_date">Date de la lettre : </label>
+        <input type="text" name="lettre_date" placeholder="Date de la lettre" id="champs_date" value="{{lettre_modifiee.lettre_date}}">
+    </div>
+    <button type="submit">Sauvegarder</button>
+
+
+</form>
+
+
+{% endblock %}

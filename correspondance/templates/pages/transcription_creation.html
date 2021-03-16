@@ -1,0 +1,33 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+Transcription
+{% endblock %}
+
+{% block corps %}
+
+    <h1>Ajouter une transcription : </h1>
+
+    <h3>Lettre {{lettre_a_transcrire.lettre_id}} :
+        {% if lettre_a_transcrire.lettre_redacteur %}
+            de {{lettre_a_transcrire.lettre_redacteur}}
+        {% endif %}
+        {% if lettre_a_transcrire.lettre_lieu %}
+            à  {{lettre_a_transcrire.lettre_lieu}}
+        {% endif %}
+        {% if lettre_a_transcrire.lettre_date %}
+            ( {{lettre_a_transcrire.lettre_date}} )
+        {% endif %}
+    </h3>
+
+    <form method="post" action="{{url_for('nouvelle_transcription', lettre_id=lettre_a_transcrire.lettre_id)}}" class="">
+        <div>
+            <label for="champs_transcription">Transcription</label>
+            <textarea class="form-control" name="transcription_lettre" placeholder="Ici votre transcription" id="champs_transcription"></textarea>
+        </div>
+        <button type="submit">Sauvegarder</button>
+    </form>
+
+
+
+{% endblock %}

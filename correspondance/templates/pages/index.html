@@ -1,0 +1,31 @@
+{% extends "conteneur.html" %}
+
+{%block corps%}
+
+    {% if lettres %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>L-#</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Auteur</th>
+                <td>Volume</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lettre in lettres %}
+            <tr>
+                <td>L-{{lettre.lettre_id}}</td>
+                <td>{{lettre.lettre_date}}</td>
+                <td>{{lettre.lettre_lieu}}</td>
+                <td>{{lettre.lettre_redacteur}}</td>
+                <td>{{lettre.lettre_volume}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endif %}
+
+{%endblock%}

@@ -1,0 +1,19 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+Transcription
+{% endblock %}
+
+{% block corps %}
+
+    <h1>Modifier une transcription : </h1>
+
+    <form method="post" action="{{url_for('modification_transcription', transcription_id=transcription_a_modifier.transcription_id)}}" class="">
+        <div>
+            <label for="champs_transcription">Transcription</label>
+            <textarea class="form-control" name="transcription_lettre_modifiee" placeholder="Ici votre transcription" id="champs_transcription"></textarea>
+        </div>
+        <button type="submit">Sauvegarder</button>
+    </form>
+
+{% endblock %}

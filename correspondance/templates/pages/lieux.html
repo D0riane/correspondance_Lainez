@@ -1,0 +1,22 @@
+{% extends "conteneur.html" %}
+
+{%block corps%}
+        <p>Cette application est créée dans le cadre de l'évaluation du cours Python de Mr. Clérice.</p>
+        <p>Elle est en cours de développement !</p>
+
+
+
+        {% if lettres %}
+                <p>Les lettres ont été envoyées depuis de nombreux lieux :
+                        <ul>
+                        {% for lettre in lettres %}
+                                <li><a>{{lettre.lettre_lieu}}</a></li>
+                        {% endfor %}
+                        </ul>
+        {% else %}
+                La base de données est en cours de constitution
+        {% endif %}
+        </p>
+        <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+
+{%endblock%}

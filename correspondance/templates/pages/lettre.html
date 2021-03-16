@@ -1,0 +1,82 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if lettre %}| Lettre : {{lettre.lettre_id}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+    {% if lettre %}
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <h3>Lettre {{lettre.lettre_id}}</h3>
+            </th>
+            <th>
+                <a class="btn btn-outline-danger" role="button" href="{{url_for('suppression_lettre', lettre_id =lettre.lettre_id)}}">Supprimer cette lettre</a>
+                <a class="btn btn-outline-success" role="button" href="{{url_for('edition', lettre_id =lettre.lettre_id)}}">Editer cette lettre</a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <ul>
+                    <li>
+                        {% if lettre.lettre_redacteur %}
+                        Missionnaire : {{lettre.lettre_redacteur}}
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if lettre.lettre_lieu %}
+                        Lieu d'envoi : {{lettre.lettre_lieu}}
+                        {% endif %}
+                    </li>
+                    <li>
+                        Date : {{lettre.lettre_date}}
+                    </li>
+                    <li>
+                        {% if lettre.lettre_volume %}
+                        Publication : {{publication.publication_titre}} [Tome : {{publication.publication_volume}}]
+                        {% endif %}
+                    </li>
+                </ul>
+            </td>
+        <tr>
+            <td>
+                {% if lettre.transcription_texte %}
+                <p>
+                    {{transcription.transcription_texte}}</p>
+                <br/>
+                <br/>
+                <br/>
+                <p>
+                    Plus d'option pour la transcription :
+                    <a class="btn btn-outline-dark" role="button" href="{{url_for('afficher_transcription', transcription_id=transcription.transcription_id)}}">Transcription</a>
+                </p>
+                {% else %}
+                <p>
+                    Il n'y a pas de transcription disponible pour cette lettre : Souhaitez vous ajouter une transcription ? <br/>
+                    Pour ajouter une transcription, <a href="{{url_for('nouvelle_transcription', lettre_id=lettre.lettre_id)}}">cliquez ici</a>.
+                </p>
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
+
+<br/>
+<br/>
+<br/>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+<br/>
+<br/>
+<br/>
+
+{% endblock %}
