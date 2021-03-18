@@ -6,27 +6,28 @@ from flask_login import current_user
 from typing import List
 
 
-# table des contributions
+# table des contributions : l'utilisateur peut contribuer de différentes façon :
+# les lettres, les sources et les transcriptions.
 class Contribution(db.Model):
     __tablename__ = "contribution"
     contribution_id = db.Column(db.Integer, nullable=True, autoincrement=True, primary_key=True)
     contribution_lettre_id = db.Column(db.Integer, db.ForeignKey('lettre.lettre_id'))
+    contribution_publication_id = db.Column(db.Integer, db.ForeignKey('publication.publication_id'))
+    contribution_transcription_id = db.Column(db.Integer, db.ForeignKey('transcription.transcription_id'))
     contribution_ut_id = db.Column(db.Integer, db.ForeignKey('utilisateur.ut_id'))
     contribution_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     utilisateur = db.relationship("Utilisateur", back_populates="contributions")
     lettre = db.relationship("Lettre", back_populates="contributions")
+    publication = db.relationship("Publication", back_populates="contributions")
+    transcription = db.relationship("Transcription", back_populates="contributions")
 
 
-class Transcrire(db.Model):
-    __tablename__ = "transcrire"
-    transcrire_id = db.Column(db.Integer, nullable=True, autoincrement=True, primary_key=True)
-    transcrire_transcription_id = db.Column(db.Integer, db.ForeignKey('transcription.transcription_id'))
-    transcrire_ut_id = db.Column(db.Integer, db.ForeignKey('utilisateur.ut_id'))
-    transcrire_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-
-    utilisateur = db.relationship("Utilisateur", back_populates="transcriptions")
-    transcription = db.relationship("Transcription", back_populates="transcriptions")
+# Table de relation entre une lettre et sa publication :
+Source = db.Table("Source",
+                  db.Column("source_lettre_id", db.Integer, db.ForeignKey('lettre.lettre_id'), primary_key=True),
+                  db.Column("source_publication_id", db.Integer, db.ForeignKey('publication.publication_id'),
+                            primary_key=True))
 
 
 class Publication(db.Model):
@@ -35,16 +36,81 @@ class Publication(db.Model):
     publication_titre = db.Column(db.Text)
     publication_volume = db.Column(db.Text)
 
+    contributions = db.relationship("Contribution", back_populates="publication")
+
+    def get_id(self):
+        """
+        Retourne l'id de l'objet actuellement utilisé
+        :return: Id de la lettre
+        :rtype: int
+        """
+        return self.publication_id
+
+    @staticmethod
+    def ajouter_publication(publication_titre, publication_volume):
+        """
+        :param publication_titre:
+        :param publication_volume:
+
+        :return:Ajout de données dans la base ou refus en cas d'erreurs
+        """
+        # Définition des paramètres obligatoires : s'ils manquent, cela crée une liste d'erreurs
+        erreurs = []
+
+        if not publication_titre:
+            erreurs.append("Le champ titre est vide")
+
+        # On vérifie que le volume n'est pas déjà enregistrée dans la BD
+        ajout_unique = Publication.query.filter(
+            db.and_(Publication.publication_titre == publication_titre,
+                    Publication.publication_volume == publication_volume)).count()
+        if ajout_unique > 0:
+            erreurs.append("Ce volume est déjà enregistré dans la base de donnée")
+
+        # On vérifie qu'il n'y a pas d'erreur
+        if len(erreurs) > 0:
+            return False, erreurs
+
+        # On créé une nouvelle lettre
+        nouvelle_publication = Publication(
+            publication_titre=publication_titre,
+            publication_volume=publication_volume)
+
+        try:
+            # On l'ajoute au transport vers la base de données
+            db.session.add(nouvelle_publication)
+            # On envoie les données
+            db.session.commit()
+
+            if nouvelle_publication:
+                # On récupère l'id de la dernière lettre référencée dans la base
+                publication = Publication.query.order_by(Publication.publication_id.desc()).limit(1).first()
+                # On récupère l'id de l'utilisateur courant authentifié
+                utilisateur = Utilisateur.query.get(current_user.ut_id)
+                # On crée un lien d'autorité
+                a_contribue = Contribution(utilisateur=utilisateur, publication=publication)
+                # On envoie dans la base et on enregistre
+                db.session.add(a_contribue)
+                db.session.commit()
+
+            return (True, nouvelle_publication)
+
+        except Exception as erreur:
+            # On annule les requêtes de la transaction en cours en cas d'erreurs
+            db.session.rollback()
+            return False, [str(erreur)]
+
 
 # table lettre envoyée
 class Lettre(db.Model):
     __tablename__ = "lettre"
     lettre_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
     lettre_date = db.Column(db.Text, nullable=False)
-    lettre_volume = db.Column(db.Integer, db.ForeignKey('publication.publication_id'), nullable=False)
     lettre_numero = db.Column(db.Text)
     lettre_redacteur = db.Column(db.Text)
     lettre_lieu = db.Column(db.Text)
+
+    lettre_volume = db.relationship("Publication", secondary=Source, backref=db.backref("Lettre", lazy='dynamic'))
 
     transcription_texte: List["Transcription"] = db.relationship("Transcription", back_populates="lettre",
                                                                  cascade="all,delete")
@@ -56,16 +122,15 @@ class Lettre(db.Model):
         :return: Id de la lettre
         :rtype: int
         """
-        return self.id_lettre
+        return self.lettre_id
 
     @staticmethod
-    def ajouter_lettre(lettre_numero, lettre_redacteur, lettre_lieu, lettre_date, lettre_volume):
+    def ajouter_lettre(lettre_numero, lettre_redacteur, lettre_lieu, lettre_date):
         """
         :param lettre_numero:
         :param lettre_redacteur:
         :param lettre_lieu:
         :param lettre_date:
-        :param lettre_volume:
         :return:Ajout de données dans la base ou refus en cas d'erreurs
         """
         # Définition des paramètres obligatoires : s'ils manquent, cela crée une liste d'erreurs
@@ -78,14 +143,10 @@ class Lettre(db.Model):
             erreurs.append("Le champ lieu est vide")
         if not lettre_date or len(lettre_date) < 4:
             erreurs.append("Le champ date d'envoi doit au moins contenir une année")
-        if lettre_volume != "1" and lettre_volume != "2" and lettre_volume != "3" and lettre_volume != "4" \
-                and lettre_volume != "5" and lettre_volume != "4" and lettre_volume != "7" and lettre_volume != "8" \
-                and lettre_volume != "9" and lettre_volume != "10" and lettre_volume != "11" and lettre_volume != "12":
-            erreurs.append("Le volume doit faire partie de la liste de volume pré enregistré")
 
         # On vérifie que la lettre n'est pas déjà enregistrée dans la BD
         ajout_unique = Lettre.query.filter(
-                db.and_(Lettre.lettre_numero == lettre_numero, Lettre.lettre_volume == lettre_volume,
+                db.and_(Lettre.lettre_numero == lettre_numero,
                         Lettre.lettre_redacteur == lettre_redacteur, Lettre.lettre_lieu == lettre_lieu,
                         Lettre.lettre_date == lettre_date)).count()
         if ajout_unique > 0:
@@ -97,11 +158,10 @@ class Lettre(db.Model):
 
         # On créé une nouvelle lettre
         nouvelle_lettre = Lettre(
-            lettre_volume=lettre_volume,
             lettre_numero=lettre_numero,
             lettre_redacteur=lettre_redacteur,
             lettre_lieu=lettre_lieu,
-            lettre_date=lettre_date
+            lettre_date=lettre_date,
         )
 
         try:
@@ -156,5 +216,7 @@ class Transcription(db.Model):
     transcription_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
     transcription_texte = db.Column(db.Text, nullable=False)
     transcription_lettre_id = db.Column(db.Integer, db.ForeignKey('lettre.lettre_id'), nullable=False)
+
     lettre: Lettre = db.relationship("Lettre", back_populates="transcription_texte")
-    transcriptions = db.relationship("Transcrire", back_populates="transcription")
+
+    contributions = db.relationship("Contribution", back_populates="transcription")

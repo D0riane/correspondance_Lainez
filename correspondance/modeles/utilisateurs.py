@@ -13,7 +13,6 @@ class Utilisateur(UserMixin, db.Model):
     ut_mail = db.Column(db.Text, nullable=False)
 
     contributions = db.relationship("Contribution", back_populates="utilisateur")
-    transcriptions = db.relationship("Transcrire", back_populates="utilisateur")
 
     # On définit 2 static méthode pour cette classe : l'identification et la création d'un nouvel utilisateur.
     @staticmethod
