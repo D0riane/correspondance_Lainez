@@ -2,7 +2,7 @@ from flask import render_template, request, flash, redirect, url_for
 from sqlalchemy import or_
 
 from ..app import app, login, db
-from ..modeles.donnees import Lettre, Contribution, Publication, Transcription, Transcrire
+from ..modeles.donnees import Lettre, Contribution, Publication, Transcription
 from ..modeles.utilisateurs import Utilisateur
 from ..constantes import LETTRES_PAR_PAGE
 
@@ -61,8 +61,10 @@ def unique_lettre(lettre_id):
     """
 
     unique_lettre = Lettre.query.get(lettre_id)
+
     publication = Publication.query.filter(db.and_(Publication.publication_id == Lettre.lettre_volume,
                                                    Lettre.lettre_id == lettre_id)).first()
+
     transcription = Transcription.query.filter(db.and_(Transcription.transcription_lettre_id == Lettre.lettre_id,
                                                        Lettre.lettre_id == lettre_id)).first()
 
@@ -84,14 +86,13 @@ def index():
 
 
 # Route vers la liste des ouvrages utilisés pour la constitution de la DB.
-@app.route('/publication', methods=["POST", "GET"])
-def publication():
+@app.route('/publications', methods=["POST", "GET"])
+def publications():
     """
         Route permettant l'affichage des ouvrages
     """
     publications = Publication.query.all()
-    return render_template('pages/publication.html', nom="Correspondance jésuite", publications=publications)
-
+    return render_template('pages/publications.html', nom="Correspondance jésuite", publications=publications)
 
 
 # Route permettant la recherche dans les lettres.
@@ -221,11 +222,10 @@ def creation():
 
     if request.method == "POST":
         status, donnees_lettre = Lettre.ajouter_lettre(
-            lettre_volume=request.form.get("lettre_volume", None),
             lettre_numero=request.form.get("lettre_numero", None),
             lettre_redacteur=request.form.get("lettre_redacteur", None),
             lettre_lieu=request.form.get("lettre_lieu", None),
-            lettre_date=request.form.get("lettre_date", None)
+            lettre_date=request.form.get("lettre_date", None),
         )
 
         if status is True:
@@ -234,7 +234,7 @@ def creation():
         else:
             flash("Les erreurs suivantes ont été rencontrées : " + " ; ".join(donnees_lettre), "danger")
 
-    return render_template("pages/lettre_creation.html", errors="errors")
+    return render_template("pages/lettre_creation.html")
 
 
 @app.route('/lettres/<int:lettre_id>/edition', methods=["POST", "GET"])
@@ -363,9 +363,9 @@ def nouvelle_transcription(lettre_id):
                 # On récupère l'id de l'utilisateur courant authentifié
                 utilisateur = Utilisateur.query.get(current_user.ut_id)
                 # On crée un lien d'autorité
-                a_transcris = Transcrire(utilisateur=utilisateur, transcription=transcription)
+                a_contribue = Contribution(utilisateur=utilisateur, transcription=transcription)
                 # On envoie dans la base et on enregistre
-                db.session.add(a_transcris)
+                db.session.add(a_contribue)
                 db.session.commit()
 
             flash(
@@ -383,12 +383,13 @@ def afficher_transcription(transcription_id):
 
     transcription = Transcription.query.get(transcription_id)
 
-    transcrire = Transcrire.query.filter(db.and_(
-        Transcrire.transcrire_transcription_id == Transcription.transcription_id,
+    transcrire = Contribution.query.filter(db.and_(
+        Contribution.contribution_transcription_id == Transcription.transcription_id,
         Transcription.transcription_id == transcription_id)).first()
 
     utilisateur = Utilisateur.query.filter(db.and_(
-        Utilisateur.ut_id == Transcrire.transcrire_ut_id, Transcription.transcription_id == transcription_id)).first()
+        Utilisateur.ut_id == Contribution.contribution_ut_id,
+        Transcription.transcription_id == transcription_id)).first()
 
     return render_template("pages/transcription.html", nom="Correspondance jésuite",
                            transcription=transcription, transcrire=transcrire, utilisateur=utilisateur)
@@ -424,9 +425,9 @@ def modification_transcription(transcription_id):
                 # On récupère l'id de l'utilisateur courant authentifié
                 utilisateur = Utilisateur.query.get(current_user.ut_id)
                 # On crée un lien d'autorité
-                a_transcris = Transcrire(utilisateur=utilisateur, transcription=transcription)
+                a_contribue = Contribution(utilisateur=utilisateur, transcription=transcription)
                 # On envoie dans la base et on enregistre
-                db.session.add(a_transcris)
+                db.session.add(a_contribue)
                 db.session.commit()
 
             flash(
@@ -457,9 +458,9 @@ def suppression_transcription(transcription_id):
             # On récupère l'id de l'utilisateur courant authentifié
             utilisateur = Utilisateur.query.get(current_user.ut_id)
             # On crée un lien d'autorité
-            a_transcris = Transcrire(utilisateur=utilisateur, transcription=transcription)
+            a_contribue = Contribution(utilisateur=utilisateur, transcription=transcription)
             # On envoie dans la base et on enregistre
-            db.session.add(a_transcris)
+            db.session.add(a_contribue)
             db.session.commit()
 
         db.session.delete(transcription_a_supprimer)
@@ -469,3 +470,109 @@ def suppression_transcription(transcription_id):
 
         return redirect(url_for('lettres'))
     return render_template("pages/transcription_suppression.html", transcription=transcription_a_supprimer)
+
+
+@app.route('/ajouter_publication', methods=["POST", "GET"])
+def publication_creation():
+    """Route permettant la création de lettre
+    :returns: création de la page
+    :rtype: page html du formulaire souhaité
+    """
+
+    if current_user.is_authenticated is False:
+        return render_template("pages/acces_refuse.html")
+
+    if request.method == "POST":
+        status, donnees_publication = Publication.ajouter_publication(
+            publication_titre=request.form.get("publication_titre", None),
+            publication_volume=request.form.get("publication_volume", None),
+        )
+
+        if status is True:
+            flash("Le volume a été ajoutée ! ", "success")
+            return redirect(url_for("publications"))
+        else:
+            flash("Les erreurs suivantes ont été rencontrées : " + " ; ".join(donnees_publication), "danger")
+
+    return render_template("pages/publication_creation.html", errors="errors")
+
+
+@app.route('/publications/<int:publication_id>/edition', methods=["POST", "GET"])
+def edition_publication(publication_id):
+    """Route permettant l'édition de lettre"""
+
+    if current_user.is_authenticated is False:
+        return render_template("pages/acces_refuse.html")
+
+    erreurs = []
+    publication_modifiee = Publication.query.get_or_404(publication_id)
+
+    if request.method == "POST":
+
+        publication_titre = request.form.get("publication_titre", None)
+        publication_volume = request.form.get("publication_volume", None)
+
+        if not publication_titre:
+            erreurs.append("Le champ numero lettre est vide.")
+
+        if len(erreurs) > 0:
+            return False, erreurs
+
+        if not erreurs:
+            publication_modifiee.publication_titre = publication_titre
+            publication_modifiee.lettre_volume = publication_volume
+
+            db.session.add(publication_modifiee)
+            db.session.commit()
+
+            if publication_modifiee:
+                # On récupère l'id de la lettre référencée dans la base
+                publication = Publication.query.get_or_404(publication_id)
+                # On récupère l'id de l'utilisateur courant authentifié
+                utilisateur = Utilisateur.query.get(current_user.ut_id)
+                # On crée un lien d'autorité
+                a_contribue = Contribution(utilisateur=utilisateur, publication=publication)
+                # On envoie dans la base et on enregistre
+                db.session.add(a_contribue)
+                db.session.commit()
+
+            flash(
+                "Vous avez modifié les données de cet ouvrage. Le titre est maintenant : {} et le tome : {}".format(
+                    publication_modifiee.publication_titre, publication_modifiee.publication_volume
+                                       ), "success")
+
+            return redirect(url_for("publications"))
+
+    return render_template("pages/publication_edition.html", nom="Correspondance jésuite",
+                           publication_modifiee=publication_modifiee)
+
+
+@app.route("/publications/<int:publication_id>/suppression", methods=["POST", "GET"])
+def suppression_publication(publication_id):
+    """Route permettant la suppression de lettre"""
+    if current_user.is_authenticated is False:
+        return render_template("pages/acces_refuse.html")
+
+    source_a_supprimer = Publication.query.get_or_404(publication_id)
+
+    # Si la méthode est POST cela signifie que le formulaire est envoyé
+    if request.method == 'POST':
+
+        if source_a_supprimer:
+            # On récupère l'id de la dernière lettre référencée dans la base
+            publication = Publication.query.get_or_404(publication_id)
+            # On récupère l'id de l'utilisateur courant authentifié
+            utilisateur = Utilisateur.query.get(current_user.ut_id)
+            # On crée un lien d'autorité
+            a_contribue = Contribution(utilisateur=utilisateur, publication=publication)
+            # On envoie dans la base et on enregistre
+            db.session.add(a_contribue)
+            db.session.commit()
+
+        db.session.delete(source_a_supprimer)
+        db.session.commit()
+
+        flash("Cette source a été supprimée", "success")
+
+        return redirect(url_for('publications'))
+    return render_template("pages/publication_suppression.html", publication=source_a_supprimer)
