@@ -1,0 +1,21 @@
+{% extends "conteneur.html" %}
+
+{% block corps %}
+<br/>
+<header>
+	<h3>Supprimer un ouvrage : {{publication.publication_titre}} {% if publication.publication_volume %}
+                (Volume {{publication.publication_volume}}) {% endif %}</h3>
+</header>
+
+	<div>
+		{% if publication %}
+	   <p>Êtes-vous certain.e de vouloir supprimer cette source ?</p>
+		<form method="POST" action="{{url_for('suppression_publication', publication_id=publication.publication_id)}}" style="text-align:center">
+			<div>
+				<button type="submit" class="btn btn-primary">Je confirme</button>
+			</div>
+ 		</form>
+		 <p><a href="{{url_for('publications')}}">Retour</a></p>
+		{% endif %}
+	</div>
+{% endblock %}

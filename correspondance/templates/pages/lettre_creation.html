@@ -11,10 +11,7 @@
 <h1>Formulaire de création</h1>
 
 <form method="post" action="{{url_for('creation')}}" class="">
-    <div>
-        <label for="champs_ref">Référence bibliographique : </label>
-        <input type="text" name="lettre_volume" placeholder="Référence bibliographique" id="champs_ref">
-    </div>
+
 
     <div>
         <label for="champs_num">Numéro de la  lettre : </label>
@@ -35,6 +32,16 @@
         <label for="champs_date">Date de la lettre : </label>
         <input type="text" name="lettre_date" placeholder="Date de la lettre" id="champs_date">
     </div>
+
+    <div>
+        <label for="champs_source">Source de la lettre : </label>
+        <input type="number" name="source_publication_id" placeholder="publication" id="champs_source">
+    </div>
+
+
+
+
+
     <button type="submit">Sauvegarder</button>
 
 

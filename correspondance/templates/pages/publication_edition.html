@@ -1,0 +1,25 @@
+{% extends "conteneur.html" %}
+
+{% block corps %}
+
+<h3>Edition d'un ouvrage : {{publication_modifiee.publication_titre}} {% if publication_modifiee.publication_volume %}
+                (Volume {{publication_modifiee.publication_volume}}) {% endif %}</h3>
+
+<form method="post" action="{{url_for('edition_publication', publication_id=publication_modifiee.publication_id)}}" class="">
+    <div>
+        <label for="champs_ref">Titre :</label>
+        <input type="text" name="publication_titre" placeholder="Titre" id="champs_ref">
+    </div>
+
+    <div>
+        <label for="champs_num">Volume :</label>
+        <input type="text" name="publication_volume" placeholder="Tome" id="champs_num">
+    </div>
+
+    <button type="submit">Sauvegarder</button>
+
+
+</form>
+<p><a href="{{url_for('publications')}}">Retour</a></p>
+
+{% endblock %}

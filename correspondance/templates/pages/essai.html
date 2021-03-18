@@ -1,0 +1,10 @@
+
+<form class="form" id="lettre_volume" action="{{url_for('sourcer_lettre', lettre = source.source_lettre_id,
+publication = source.source_publication_id)}}" method="POST">
+        <div class="input-group">
+            <input type="text" form="lettre_volume" name="tag" class="form-control form-control-lg" placeholder="Sourcer la lettre">
+            <span class="input-group-btn">
+                <button class="btn btn-lg"  role="button">Insérer</button>
+            </span>
+        </div>
+    </form>
