@@ -30,6 +30,12 @@ Source = db.Table("Source",
                             primary_key=True))
 
 
+
+
+
+
+
+
 class Publication(db.Model):
     __tablename__ = "publication"
     publication_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
@@ -187,6 +193,42 @@ class Lettre(db.Model):
             # On annule les requêtes de la transaction en cours en cas d'erreurs
             db.session.rollback()
             return False, [str(erreur)]
+
+    @staticmethod
+    def sourcer_lettre(publication_id, lettre_id):
+        '''
+        Fonction qui permet d'associer une publication à une lettre
+            :param publication_id: identifiant une publication à ajouter à la lettre (int)
+            :param lettre_id: identifiant du document auquel ajouter la publication (int)
+            :return: renvoie une liste d'erreurs s'il y en a
+        '''
+
+        erreurs = []
+        if not publication_id:
+            erreurs.append("Il n'y a pas de publication à associer")
+        if not lettre_id:
+            erreurs.append("Il n'y a pas de lettre à associer")
+
+        source = Publication.query.filter(Publication.publication_id == publication_id).first()
+        # je récupère la publication correspondant à l'id
+        lettre = Lettre.query.filter(Lettre.lettre_id == lettre_id).first()
+        # idem pour la lettre
+
+        if source is None or lettre is None:
+            # si les identifiants ne correspondent à rien, je ne fais rien
+            return
+
+        if source not in lettre.lettre_volume:
+            # si le tag n'est pas déjà dans la liste de tag contenu dans document_tag
+            lettre.lettre_volume.append(source)
+            # je l'ajoute à cette liste
+
+        db.session.add(lettre)
+        db.session.commit()
+
+        return erreurs
+
+
 
     def to_jsonapi_dict(self):
         """
