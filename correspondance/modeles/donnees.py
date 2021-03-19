@@ -215,19 +215,31 @@ class Lettre(db.Model):
         # idem pour la lettre
 
         if source is None or lettre is None:
-            # si les identifiants ne correspondent à rien, je ne fais rien
+            # si les identifiants ne correspondent à rien, rien ne se passe.
             return
 
         if source not in lettre.lettre_volume:
-            # si le tag n'est pas déjà dans la liste de tag contenu dans document_tag
+            # si la source n'est pas déjà dans la liste de source contenu dans lettre_volume
             lettre.lettre_volume.append(source)
             # je l'ajoute à cette liste
 
         db.session.add(lettre)
         db.session.commit()
 
-        return erreurs
+        if lettre:
+            # On récupère l'id de la lettre référencée dans la base
+            lettre_sourcee = Lettre.query.get_or_404(lettre_id)
+            source = Publication.query.filter(Publication.publication_id == publication_id).first()
+            # On récupère l'id de l'utilisateur courant authentifié
+            utilisateur = Utilisateur.query.get(current_user.ut_id)
 
+            # On crée un lien d'autorité
+            a_contribue = Contribution(utilisateur=utilisateur, lettre=lettre_sourcee, publication=source)
+            # On envoie dans la base et on enregistre
+            db.session.add(a_contribue)
+            db.session.commit()
+
+        return erreurs
 
 
     def to_jsonapi_dict(self):
