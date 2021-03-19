@@ -36,23 +36,43 @@
                     <li>
                         Date : {{lettre.lettre_date}}
                     </li>
-                    <li>
-                        {% if lettre.lettre_volume %}
-                        {{lettre.lettre_volume}}
-                        Publication : {{publication.publication_titre}} [Tome : {{publication.publication_volume}}]
-                        {% endif %}
-                        <a href="{{url_for('source', lettre_id=lettre.lettre_id)}}">Cliquez ici</a>
-                        pour relier cette lettre aux ouvrages dans lequel elle est publiée.
-                    </li>
+
                 </ul>
             </td>
         <tr>
             <td>
+
+                {% if lettre.lettre_volume %}
+                Source :
+                <ul>
+                {% for publication in lettre.lettre_volume %}
+                    <form method="post" id="supprimer_source" action="{{url_for('supprimer_source',
+                    lettre_id = lettre.lettre_id, publication_id = publication.publication_id)}}">
+                        {{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .
+                        <a class="btn btn-outline-danger" role="button" href="{{url_for('supprimer_source',
+                    lettre_id = lettre.lettre_id, publication_id = publication.publication_id)}}"> X </a>
+                    </form>
+                {% endfor %}
+                </ul>
+                <a class="btn btn-outline-success" role="button"
+                   href="{{url_for('source', lettre_id=lettre.lettre_id)}}">
+                    Ajouter une source supplémentaire à cette lettre</a>
+
+
+                {% else %}
+                Pas de source rensignée pour cette lettre :
+                <a class="btn btn-outline-success" role="button"
+                   href="{{url_for('source', lettre_id=lettre.lettre_id)}}">Ajouter une source à cette lettre</a>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
                 {% if lettre.transcription_texte %}
+                Transcription :
+                <br/>
                 <p>
                     {{transcription.transcription_texte}}</p>
-                <br/>
-                <br/>
                 <br/>
                 <p>
                     Plus d'option pour la transcription :
@@ -72,8 +92,7 @@
     {% else %}
         <p>La base de données est en cours de constitution</p>
     {% endif %}
-
-<br/>
+</div>
 <br/>
 <br/>
     <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
@@ -81,5 +100,4 @@
 <br/>
 <br/>
 <br/>
-
 {% endblock %}

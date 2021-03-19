@@ -12,11 +12,6 @@
 
 <form method="post" action="{{url_for('edition', lettre_id=lettre_modifiee.lettre_id)}}" class="">
     <div>
-        <label for="champs_ref">Référence bibliographique : </label>
-        <input type="text" name="lettre_volume" placeholder="Référence bibliographique" id="champs_ref" value="{{lettre_modifiee.lettre_volume}}">
-    </div>
-
-    <div>
         <label for="champs_num">Numéro de la  lettre : </label>
         <input type="text" name="lettre_numero" placeholder="Identifiant de la lettre" id="champs_num" value="{{lettre_modifiee.lettre_numero}}">
     </div>

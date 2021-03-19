@@ -1,0 +1,27 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}| Suppression source{%endblock%}
+
+{% block corps %}
+<br/>
+<header>
+	<h3>Supprimer une source</h3>
+</header>
+
+	<div>
+		{% if lettre %}
+	   <p>Êtes-vous certain.e de vouloir supprimer cette source ?</p>
+		<form method="POST" action="{{url_for('supprimer_source',
+		 lettre_id = lettre.lettre_id, publication_id = publication_id.publication_id)}}" style="text-align:center">
+			<div>
+				<button type="submit" class="btn btn-primary" name="publication_id" value="{{publication_id.publication_id}}">Oui !</button>
+			</div>
+
+ 		</form>
+
+
+		 <p><a href="{{url_for('unique_lettre', lettre_id = lettre.lettre_id)}}">Retour</a></p>
+		{% endif %}
+
+	</div>
+{% endblock %}
