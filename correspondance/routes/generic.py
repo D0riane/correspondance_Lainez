@@ -216,6 +216,7 @@ def creation():
     :returns: création de la page
     :rtype: page html du formulaire souhaité
     """
+    publications = Publication.query.all()
 
     if current_user.is_authenticated is False:
         return render_template("pages/acces_refuse.html")
@@ -234,7 +235,26 @@ def creation():
         else:
             flash("Les erreurs suivantes ont été rencontrées : " + " ; ".join(donnees_lettre), "danger")
 
-    return render_template("pages/lettre_creation.html")
+    return render_template("pages/lettre_creation.html", publications=publications)
+
+
+@app.route('/lettres/<int:lettre_id>/source', methods=["POST", "GET"])
+def source(lettre_id):
+    if current_user.is_authenticated is False:
+        return render_template("pages/acces_refuse.html")
+
+    source_lettre = request.form.get("publication_id", None)
+    lettre_a_sourcer = Lettre.query.get_or_404(lettre_id)
+    publications = Publication.query.all()
+
+    if source_lettre:
+        Lettre.sourcer_lettre(source_lettre, lettre_id)
+
+        flash("La lettre {} se trouve dans l'ouvrage {}".format(lettre_a_sourcer, source_lettre), "success")
+        return redirect(url_for("lettres"))
+
+    return render_template("pages/essai.html", nom="Correspondance jésuite", lettre=lettre_a_sourcer,
+                           publications=publications)
 
 
 @app.route('/lettres/<int:lettre_id>/edition', methods=["POST", "GET"])
@@ -330,6 +350,14 @@ def suppression_lettre(lettre_id):
 
         return redirect(url_for('lettres'))
     return render_template("pages/lettre_suppression.html", lettre=lettre_a_supprimer)
+
+
+
+
+
+
+
+
 
 
 # Routes pour la création, édition et suppression de transcription de lettre :
