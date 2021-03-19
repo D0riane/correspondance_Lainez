@@ -45,9 +45,10 @@ def lettres():
         page = 1
 
     lettres = Lettre.query.paginate(page=page, per_page=LETTRES_PAR_PAGE)
+    publications = Publication.query.all()
 
     return render_template('pages/lettres.html', nom="Correspondance jésuite",
-                           lettres=lettres)
+                           lettres=lettres, publications=publications)
 
 
 # Route vers chacune des lettres grâce à leur id.
@@ -121,10 +122,10 @@ def recherche():
         resultats = Lettre.query.filter(or_(Lettre.lettre_date.like("%{}%".format(motclef)),
                                             Lettre.lettre_redacteur.like("%{}%".format(motclef)),
                                             Lettre.lettre_lieu.like("%{}%".format(motclef)),
-                                            Lettre.lettre_volume.like("%{}%".format(motclef))
-                                            )).paginate(page=page, per_page=LETTRES_PAR_PAGE)
+                                            Lettre.lettre_volume.any(Publication.publication_titre.like("%{}%".format(
+                                                motclef))))).paginate(page=page, per_page=LETTRES_PAR_PAGE)
 
-        titre = "Résultat pour la recherche `" + motclef + "`"
+        titre = "Résultat(s) de votre recherche pour ' " + motclef + " ' "
     return render_template("pages/recherche.html", resultats=resultats, titre=titre, keyword=motclef)
 
 
@@ -250,11 +251,36 @@ def source(lettre_id):
     if source_lettre:
         Lettre.sourcer_lettre(source_lettre, lettre_id)
 
-        flash("La lettre {} se trouve dans l'ouvrage {}".format(lettre_a_sourcer, source_lettre), "success")
-        return redirect(url_for("lettres"))
+        flash("La lettre a été reliée à l'ouvrage {}".format(source_lettre), "success")
+        return redirect(url_for("unique_lettre", lettre_id=lettre_id))
 
     return render_template("pages/essai.html", nom="Correspondance jésuite", lettre=lettre_a_sourcer,
                            publications=publications)
+
+
+@app.route('/lettres/<lettre_id>/supprimer_source', methods=["POST", "GET"])
+def supprimer_source(lettre_id):
+    if current_user.is_authenticated is False:
+        return render_template("pages/acces_refuse.html")
+
+    lettre = Lettre.query.get_or_404(lettre_id)
+    publication_id = request.form.get("publication_id")
+
+    if publication_id in lettre.lettre_volume:
+        # si la publication est bien dans la liste des sources de la lettre
+        lettre.lettre_volume.remove(publication_id)
+        # je le supprime de cette liste
+
+        db.session.add(lettre)
+        db.session.commit()
+
+        flash(
+            "Source supprimée !", "success")
+
+        return redirect(url_for("unique_lettre", lettre_id=lettre_id))
+
+    return render_template("pages/source_suppression.html", nom="Correspondance jésuite", lettre=lettre,
+                           publication_id=publication_id)
 
 
 @app.route('/lettres/<int:lettre_id>/edition', methods=["POST", "GET"])
@@ -269,7 +295,6 @@ def edition(lettre_id):
 
     if request.method == "POST":
 
-        lettre_volume = request.form.get("lettre_volume", None)
         lettre_numero = request.form.get("lettre_numero", None)
         lettre_redacteur = request.form.get("lettre_redacteur", None)
         lettre_lieu = request.form.get("lettre_lieu", None)
@@ -283,15 +308,13 @@ def edition(lettre_id):
             erreurs.append("Le champ lieu d'envoi est vide.")
         if not lettre_date:
             erreurs.append("Le champ date d'envoi est vide.")
-        if not lettre_volume:
-            erreurs.append("Le champ référence volume est vide.")
+
 
         if len(erreurs) > 0:
             return False, erreurs
 
         if not erreurs:
             lettre_modifiee.lettre_numero = lettre_numero
-            lettre_modifiee.lettre_volume = lettre_volume
             lettre_modifiee.lettre_redacteur = lettre_redacteur
             lettre_modifiee.lettre_lieu = lettre_lieu
             lettre_modifiee.lettre_date = lettre_date
