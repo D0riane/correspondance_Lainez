@@ -41,6 +41,8 @@
                         {{lettre.lettre_volume}}
                         Publication : {{publication.publication_titre}} [Tome : {{publication.publication_volume}}]
                         {% endif %}
+                        <a href="{{url_for('source', lettre_id=lettre.lettre_id)}}">Cliquez ici</a>
+                        pour relier cette lettre aux ouvrages dans lequel elle est publiée.
                     </li>
                 </ul>
             </td>

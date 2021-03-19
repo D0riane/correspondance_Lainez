@@ -34,18 +34,19 @@
     </div>
 
     <div>
-        <label for="champs_source">Source de la lettre : </label>
-        <input type="number" name="source_publication_id" placeholder="publication" id="champs_source">
+        <select name="BLA">
+            {% for publication in publications %}
+            <option value="{{publication.publication_id}}">{{publication.publication_titre}}</option>
+            {% endfor %}
+        </select>
     </div>
-
-
-
-
 
     <button type="submit">Sauvegarder</button>
 
 
 </form>
+
+
 
 
 {% endblock %}

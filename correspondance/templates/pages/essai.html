@@ -1,10 +1,24 @@
+{% extends "conteneur.html" %}
 
-<form class="form" id="lettre_volume" action="{{url_for('sourcer_lettre', lettre = source.source_lettre_id,
-publication = source.source_publication_id)}}" method="POST">
-        <div class="input-group">
-            <input type="text" form="lettre_volume" name="tag" class="form-control form-control-lg" placeholder="Sourcer la lettre">
-            <span class="input-group-btn">
-                <button class="btn btn-lg"  role="button">Insérer</button>
-            </span>
+{% block corps %}
+<h3>A quelle publication voulez vous relier cette lettre ? </h3>
+
+<form method="POST" action="{{url_for('source', lettre_id=lettre.lettre_id)}}" class="">
+    <div>
+        <p>Ouvrages:</p>
+        <select name="publication_id" class="form-control">
+            {% for publication in publications %}
+            <option value="{{publication.publication_id}}">{{publication.publication_titre}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="publication_id">
         </div>
-    </form>
+</form>
+
+
+
+
+
+
+
+{% endblock %}
