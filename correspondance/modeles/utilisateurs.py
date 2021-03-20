@@ -3,7 +3,8 @@ from flask_login import UserMixin
 
 from .. app import db, login
 
-# On définit la classe utilisateurs :
+
+# Table des utilisateurs :
 class Utilisateur(UserMixin, db.Model):
     __tablename__ = "utilisateur"
     ut_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
@@ -11,19 +12,17 @@ class Utilisateur(UserMixin, db.Model):
     ut_login = db.Column(db.Text, nullable=False)
     ut_mdp = db.Column(db.Text, nullable=False)
     ut_mail = db.Column(db.Text, nullable=False)
-
     contributions = db.relationship("Contribution", back_populates="utilisateur")
 
-    # On définit 2 static méthode pour cette classe : l'identification et la création d'un nouvel utilisateur.
     @staticmethod
     def identification(login, motdepasse):
         """ Identifie un utilisateur. Si cela fonctionne, renvoie les données de l'utilisateurs.
-
         :param login: Login de l'utilisateur
         :param motdepasse: Mot de passe de l'utilisateur
         :returns: Si réussite, données de l'utilisateur. Sinon None
         :rtype: User or None
         """
+        # Vérification que le login et le mot de passe correspondent à un utilisateur enregistré dans la BD :
         utilisateur = Utilisateur.query.filter(Utilisateur.ut_login == login).first()
         if utilisateur and check_password_hash(utilisateur.ut_mdp, motdepasse):
             return utilisateur
@@ -31,17 +30,25 @@ class Utilisateur(UserMixin, db.Model):
 
     @staticmethod
     def nouvel_utilisateur(login, email, nom, motdepasse):
-        """ Crée un compte utilisateur-rice. Retourne un tuple (booléen, User ou liste).
+        """
+        Crée un compte utilisateur. Retourne un tuple (booléen, User ou liste).
         Si il y a une erreur, la fonction renvoie False suivi d'une liste d'erreur
         Sinon, elle renvoie True suivi de la donnée enregistrée
 
-        :param login: Login de l'utilisateur-rice
-        :param email: Email de l'utilisateur-rice
-        :param nom: Nom de l'utilisateur-rice
-        :param motdepasse: Mot de passe de l'utilisateur-rice (Minimum 6 caractères)
-
+        :param login: Login de l'utilisateur
+        :type: str
+        :param email: Email de l'utilisateur
+        :type: str
+        :param nom: Nom de l'utilisateur
+        :type: str
+        :param motdepasse: Mot de passe de l'utilisateur (Minimum 6 caractères)
+        :type: str
         """
+        # Définition d'une liste d'erreur vide.
         erreurs = []
+
+        # Définition des erreurs (paramètre obligatoire) : Si le champs n'est pas rempli correctement,
+        # une erreur s'ajoute à la liste précédemment définie.
         if not login:
             erreurs.append("Le login fourni est vide")
         if not email:
@@ -51,18 +58,20 @@ class Utilisateur(UserMixin, db.Model):
         if not motdepasse or len(motdepasse) < 6:
             erreurs.append("Le mot de passe fourni est vide ou trop court")
 
-        # On vérifie que personne n'a utilisé cet email ou ce login
+        # Définition des erreurs : Vérification qu'un utilisateur n'est pas déjà enregistré avec ce mail ou ce login
+        # dans la BD. Sinon, une erreur s'ajoute à la liste précédemment définie.
         uniques = Utilisateur.query.filter(
             db.or_(Utilisateur.ut_mail == email, Utilisateur.ut_login == login)
         ).count()
         if uniques > 0:
             erreurs.append("L'email ou le login sont déjà inscrits dans notre base de données")
 
-        # Si on a au moins une erreur
+        # Si la longueur de la liste erreurs est supérieur à 0, donc si il y a au moins une erreur :
         if len(erreurs) > 0:
+            # Renvoi False et la liste erreurs.
             return False, erreurs
 
-        # On crée un utilisateur
+        # Si il n'y a pas d'erreur, création d'un nouvel utilisateur :
         utilisateur = Utilisateur(
             ut_nom=nom,
             ut_login=login,
@@ -71,14 +80,16 @@ class Utilisateur(UserMixin, db.Model):
         )
 
         try:
-            # On l'ajoute au transport vers la base de données
+            # Envoi dans la DB et enregistrement
             db.session.add(utilisateur)
-            # On envoie le paquet
             db.session.commit()
 
-            # On renvoie l'utilisateur
+            # Renvoi True et les données de l'utilisateur à la fonction inscription.
             return True, utilisateur
+
+        # Si il y a des erreurs :
         except Exception as erreur:
+            # Renvoi False à la fonction inscription et les erreurs rencontrées.
             return False, [str(erreur)]
 
     def get_id(self):
@@ -101,7 +112,9 @@ class Utilisateur(UserMixin, db.Model):
             }
         }
 
-
+# login.user_loader est un rappel utilisé pour recharger l'objet utilisateur à partir de l'ID utilisateur stocké
+# dans la session. La méthode .get() renvoi un identifiant unique pour identifier l'utilisateur. Elle est utilisée pour
+# charger l'utilisateur à partir du rappel user_loader.
 @login.user_loader
 def trouver_utilisateur_via_id(identifiant):
     return Utilisateur.query.get(int(identifiant))
