@@ -20,7 +20,11 @@
                 <td>{{lettre.lettre_date}}</td>
                 <td>{{lettre.lettre_lieu}}</td>
                 <td>{{lettre.lettre_redacteur}}</td>
-                <td>{{lettre.lettre_volume}}</td>
+                <td width="30%">{% if lettre.lettre_volume %}
+                                {% for publication in lettre.lettre_volume %}
+                                {{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .
+                                {% endfor %}
+                                {% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>

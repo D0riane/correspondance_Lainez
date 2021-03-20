@@ -33,14 +33,6 @@
         <input type="text" name="lettre_date" placeholder="Date de la lettre" id="champs_date">
     </div>
 
-    <div>
-        <select name="BLA">
-            {% for publication in publications %}
-            <option value="{{publication.publication_id}}">{{publication.publication_titre}}</option>
-            {% endfor %}
-        </select>
-    </div>
-
     <button type="submit">Sauvegarder</button>
 
 

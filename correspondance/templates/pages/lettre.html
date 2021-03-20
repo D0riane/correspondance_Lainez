@@ -81,7 +81,12 @@
                 {% else %}
                 <p>
                     Il n'y a pas de transcription disponible pour cette lettre : Souhaitez vous ajouter une transcription ? <br/>
-                    Pour ajouter une transcription, <a href="{{url_for('nouvelle_transcription', lettre_id=lettre.lettre_id)}}">cliquez ici</a>.
+
+                    <a class="btn btn-outline-success" role="button"
+                   href="{{url_for('nouvelle_transcription', lettre_id=lettre.lettre_id)}}">
+                    Ajouter une transcription</a>
+
+
                 </p>
                 {% endif %}
             </td>

@@ -6,22 +6,43 @@
 
 {%block corps%}
         <h1>Bienvenue !</h1>
-        <p>Cette application est créée dans le cadre de l'évaluation du cours Python de Mr. Clérice.</p>
-        <p>Elle est en cours de développement !</p>
 
-        {% if toutes_les_lettres %}
-            <p>Cette base de données rassemblent les lettres envoyés par les missionnaires jésuites européens à
-            leur Préposé Général, Lainez. La correspondance est fournie, nous comptons <a href="{{url_for('lettres')}}">{{toutes_les_lettres|length}}</a>
+        <p>Cette base de données rassemblent les lettres envoyés par les missionnaires jésuites européens à
+            leur Préposé Général, Lainez. </p>
+
+        {% if toutes_les_lettres and toutes_les_transcriptions %}
+
+            <p>Nous comptons <a href="{{url_for('lettres')}}">{{toutes_les_lettres|length}}</a> lettres
+                et <a href="{{url_for('transcriptions')}}">{{toutes_les_transcriptions|length}}</a> transcriptions
             dans la base de données pour l'instant.</p>
+<p class="text-align">Découvrez :</p>
 
-            <p>Découvrez les {{dernieres_lettres|length}} dernières lettres enregistrés :</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col p-3 mb-2 bg-light text-dark">
+                Les {{dernieres_lettres|length}} dernières lettres enregistrées :
                 <ul>{% for lettre in dernieres_lettres %}
-                    <li>La lettre écrite par {{lettre.lettre_redacteur}} à {{lettre.lettre_lieu}} ({{lettre.lettre_date}})</li>
+                    <li>La lettre écrite par {{lettre.lettre_redacteur}} à {{lettre.lettre_lieu}} ({{lettre.lettre_date}})
+                    <a href="{{url_for('unique_lettre', lettre_id = lettre.lettre_id)}}">Voir</a>
+                    </li>
                     {% endfor %}
                 </ul>
+            </div>
 
+            <div class="col p-3 mb-2 bg-light text-dark">
+                Les {{dernieres_transcriptions|length}} dernières transcriptions ajoutées :
+                <ul>{% for transcription in dernieres_transcriptions %}
+                    <li>La transcription de la lettre {{transcription.transcription_lettre_id }} :
+                    <a href="{{url_for('afficher_transcription', transcription_id = transcription.transcription_id)}}">Voir</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
         {% else %}
                 <p>La base de données est en cours de constitution</p>
         {% endif %}
-
+</div>
 {%endblock%}
