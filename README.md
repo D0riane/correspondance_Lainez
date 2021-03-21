@@ -28,7 +28,7 @@ Pré-requis : python3
 - Installer les librairies nécessaires rassemblées dans [requirements.txt](https://github.com/D0riane/correspondance_Lainez/blob/master/requirements.txt) avec la commande ``pip install -r requirements.txt``
 - Lancer l'application avec la commande ``python run.py``
 
-L'application se lancera sur votre navigateur sur la page http://127.0.0.1:8888/ .
+L'application se lancera sur votre navigateur sur la page http://127.0.0.1:5000 .
 
 ## Lancement (MAC / Linux)
 A chaque nouveau lancement, il sera nécessaire d'activer l'environnement virtuel et de lancer l'application ( ``python run.py`` ) .
