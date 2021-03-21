@@ -295,23 +295,18 @@ class Lettre(db.Model):
             db.session.add(a_contribue)
             db.session.commit()
 
-
-
     def to_jsonapi_dict(self):
         """
          It ressembles a little JSON API format but it is not completely compatible
-
-        :return:
         """
         return {
-            "type": "lettre",
+            "type": "Lettre",
             "id": self.lettre_id,
             "attributes": {
                 "numero": self.lettre_numero,
                 "auteur": self.lettre_redacteur,
                 "lieu": self.lettre_lieu,
                 "date": self.lettre_date,
-                "source": self.lettre_volume,
             },
             "links": {
                 "self": url_for("lettres", lettre_id=self.lettre_id, _external=True),
@@ -321,7 +316,15 @@ class Lettre(db.Model):
                  "editions": [
                      contributor.author_to_json()
                      for contributor in self.contributions
-                 ]
+                 ],
+                "source": [
+                    publication.to_jsonapi_dict()
+                    for publication in self.lettre_volume
+                ],
+                "transcription": [
+                    transcription.to_jsonapi_dict()
+                    for transcription in self.transcription_texte
+                ]
             }
         }
 
@@ -352,12 +355,12 @@ class Transcription(db.Model):
             "type": "Transcription",
             "id": self.transcription_id,
             "attributes": {
-                "Lettre": self.transcription_lettre_id,
+                "ID lettre transcrite": self.transcription_lettre_id,
                 "Texte": self.transcription_texte,
             },
             "links": {
-                "self": url_for("transcriptions", transcriptions_id=self.transcriptions_id, _external=True),
-                "json": url_for("api_transcription_unique", transcriptions_id=self.transcriptions_id, _external=True)
+                "self": url_for("transcriptions", transcription_id=self.transcription_id, _external=True),
+                "json": url_for("api_transcription_unique", transcription_id=self.transcription_id, _external=True)
             },
             "relationships": {
                  "editions": [

@@ -106,11 +106,12 @@ class Utilisateur(UserMixin, db.Model):
         :return:
         """
         return {
-            "type": "people",
+            "type": "Contributeur",
             "attributes": {
                 "name": self.ut_nom
             }
         }
+
 
 # login.user_loader est un rappel utilisé pour recharger l'objet utilisateur à partir de l'ID utilisateur stocké
 # dans la session. La méthode .get() renvoi un identifiant unique pour identifier l'utilisateur. Elle est utilisée pour
