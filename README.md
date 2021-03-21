@@ -12,13 +12,13 @@ Elle répond à deux objectifs :
 
 Toutes les données sont ouvertes et peuvent être récupérées en JSON.
 
-## Installation (MAC / Linuc)
+## Installation (MAC / Linux)
 Pré-requis : python3
 
 - Cloner ce repository
 - Installer et activer l'environnement virtuel
-- Installer les librairies nécessaires rassemblées dans requirements.txt grâce à la commande ``pip install -r requirements.txt``
-- Lancer l'application grâce à la commande ``python run.py``
+- Installer les librairies nécessaires rassemblées dans [requirements.txt](https://github.com/D0riane/correspondance_Lainez/blob/master/requirements.txt) avec la commande ``pip install -r requirements.txt``
+- Lancer l'application avec la commande ``python run.py``
 
-## Lancement (MAC / Linuc)
+## Lancement (MAC / Linux)
 A chaque nouveau lancement, il sera nécessaire d'activer l'environnement virtuel et de lancer l'application ( ``python run.py`` ) .
