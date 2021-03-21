@@ -90,24 +90,6 @@ def unique_lettre(lettre_id):
                            lettre=unique_lettre, publication=publication, transcription=transcription)
 
 
-# Route pour voir toutes des lettres sous la forme de tableau sans pagination.
-@app.route('/index', methods=["POST", "GET"])
-def index():
-    """"
-        Route pour une page affichant toutes les lettres (sans objet paginate) pour permettre de récupérer
-        toutes les données en JSON.
-        :return: template HTML (index.html)
-    """
-    # Récupération de toutes les lettres
-    lettres = Lettre.query.all()
-
-    # Définition de la variable publications permettant l'affichage des données de la classe Publication
-    # appelées dans le template.
-    publications = Publication.query.all()
-
-    return render_template('pages/index.html', nom="Correspondance jésuite", lettres=lettres, publications=publications)
-
-
 # Route permettant la recherche dans les lettres.
 @app.route("/recherche", methods=["POST", "GET"])
 def recherche():
