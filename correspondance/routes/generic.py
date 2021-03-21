@@ -373,7 +373,7 @@ def source(lettre_id):
         # L'utilisateur est redirigé vers la page de la lettre, grâce à la fonction unique_lettre précédemment définie.
         return redirect(url_for("unique_lettre", lettre_id=lettre_id))
 
-    return render_template("pages/essai.html", nom="Correspondance jésuite", lettre=lettre_a_sourcer,
+    return render_template("pages/source_ajouter.html", nom="Correspondance jésuite", lettre=lettre_a_sourcer,
                            publications=publications)
 
 

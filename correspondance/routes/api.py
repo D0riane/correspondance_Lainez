@@ -1,9 +1,10 @@
-from flask import request, url_for, jsonify
-from urllib.parse import urlencode
+# Import des modules Flask et sqlaclchemy nécessaire au fonctionnement de l'application
+from flask import request, jsonify
 from sqlalchemy import or_
 
+# Import de l'application, des constantes et des classes.
 from ..app import app
-from ..constantes import LETTRES_PAR_PAGE, API_ROUTE
+from ..constantes import API_ROUTE
 from ..modeles.donnees import Lettre, Publication, Transcription
 
 
