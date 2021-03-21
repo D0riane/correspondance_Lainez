@@ -23,6 +23,9 @@ class Contribution(db.Model):
     transcription = db.relationship("Transcription", back_populates="contributions")
 
     def author_to_json(self):
+        """
+         Est appelé pour d'obtenir le lien d'autorité des modifications de données en JSON
+        """
         return {
             "contributor": self.utilisateur.to_jsonapi_dict(),
             "on": self.contribution_date
@@ -116,8 +119,7 @@ class Publication(db.Model):
 
     def to_jsonapi_dict(self):
         """
-         It ressembles a little JSON API format but it is not completely compatible
-        :return:
+         Permet de récupérer toutes les données d'une publication en JSON
         """
         return {
             "type": "Publication",
@@ -297,7 +299,7 @@ class Lettre(db.Model):
 
     def to_jsonapi_dict(self):
         """
-         It ressembles a little JSON API format but it is not completely compatible
+         Permet de récupérer toutes les données d'une lettre en JSON
         """
         return {
             "type": "Lettre",
@@ -341,15 +343,14 @@ class Transcription(db.Model):
     def get_id(self):
         """
         Retourne l'id de l'objet actuellement utilisé
-        :return: Id de la lettre
+        :return: Id de la transcription
         :rtype: int
         """
         return self.transcription_id
 
     def to_jsonapi_dict(self):
         """
-         It ressembles a little JSON API format but it is not completely compatible
-        :return:
+         Permet de récupérer toutes les données d'une transcription en JSON
         """
         return {
             "type": "Transcription",
