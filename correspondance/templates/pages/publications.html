@@ -14,8 +14,10 @@
                 {{publication.publication_titre}}
                 {% if publication.publication_volume %}
                 (Volume {{publication.publication_volume}})
+                {% if current_user.is_authenticated %}
                 <small><a href={{url_for('edition_publication',publication_id=publication.publication_id)}}>Modifier</a></small>
                 <small><a href={{url_for('suppression_publication',publication_id=publication.publication_id)}}>Supprimer</a></small>
+                {% endif %}
                 {% endif %}
         </li>
         {% endfor %}
@@ -25,7 +27,9 @@
         {% else %}
         <p>La base de données est en cours de constitution</p>
         {% endif %}
+        {% if current_user.is_authenticated %}
         <a href="{{url_for('publication_creation')}}">Ajouter un ouvrage</a>
+        {% endif %}
         <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
 
 {%endblock%}

@@ -13,9 +13,12 @@
             <th>
                 <h3>Lettre {{lettre.lettre_id}}</h3>
             </th>
+
             <th>
+            {% if current_user.is_authenticated %}
                 <a class="btn btn-outline-danger" role="button" href="{{url_for('suppression_lettre', lettre_id =lettre.lettre_id)}}">Supprimer cette lettre</a>
                 <a class="btn btn-outline-success" role="button" href="{{url_for('edition', lettre_id =lettre.lettre_id)}}">Editer cette lettre</a>
+            {% endif %}
             </th>
         </tr>
         </thead>
@@ -46,23 +49,31 @@
                 Source :
                 <ul>
                 {% for publication in lettre.lettre_volume %}
+
                     <form method="post" id="supprimer_source" action="{{url_for('supprimer_source',
                     lettre_id = lettre.lettre_id, publication_id = publication.publication_id)}}">
                         {{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .
+                        {% if current_user.is_authenticated %}
                         <a class="btn btn-outline-danger" role="button" href="{{url_for('supprimer_source',
                     lettre_id = lettre.lettre_id, publication_id = publication.publication_id)}}"> X </a>
+                        {% endif %}
                     </form>
+
                 {% endfor %}
                 </ul>
+                {% if current_user.is_authenticated %}
                 <a class="btn btn-outline-success" role="button"
                    href="{{url_for('source', lettre_id=lettre.lettre_id)}}">
                     Ajouter une source supplémentaire à cette lettre</a>
-
+                {% endif %}
 
                 {% else %}
-                Pas de source rensignée pour cette lettre :
+                Il n'y pas de source renseignée pour cette lettre.
+
+                {% if current_user.is_authenticated %}
                 <a class="btn btn-outline-success" role="button"
                    href="{{url_for('source', lettre_id=lettre.lettre_id)}}">Ajouter une source à cette lettre</a>
+                {% endif %}
                 {% endif %}
             </td>
         </tr>
@@ -80,12 +91,13 @@
                 </p>
                 {% else %}
                 <p>
-                    Il n'y a pas de transcription disponible pour cette lettre : Souhaitez vous ajouter une transcription ? <br/>
+                    Il n'y a pas de transcription disponible pour cette lettre. <br/>
 
+                    {% if current_user.is_authenticated %}
                     <a class="btn btn-outline-success" role="button"
                    href="{{url_for('nouvelle_transcription', lettre_id=lettre.lettre_id)}}">
                     Ajouter une transcription</a>
-
+                    {% endif %}
 
                 </p>
                 {% endif %}
