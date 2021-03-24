@@ -363,18 +363,36 @@ def source(lettre_id):
 @login_required
 def supprimer_source(lettre_id):
     """
-    Route permettant de retirer un lien publication / lettre. (Ne fonctionne malheureusement pas...)
+    Route permettant de retirer un lien publication / lettre.
+    (Ne fonctionne malheureusement pas...)
     :param lettre_id: Identifiant de la lettre
     :type lettre_id: int
     :returns: template HTML avec le formulaire d'ajout de source à la lettre
     et création de ce nouveau lien publication/lettre.
     """
+
     # Récupération de l'ID de la lettre dont on veut retirer le lien à sa publication grâce .get_or_404()
     lettre = Lettre.query.get_or_404(lettre_id)
 
     # Récupération de l'ID de la publication, déterminé dans le formulaire, dont on veut retirer le lien à la lettre.
-    publication_id = request.form.get("publication_id")
+    publication_id = request.form.get("publication_id", None)
 
+    if publication_id:
+        # On les envoi avec l'ID de la lettre à la static methode sourcer_lettre de la classe Lettre.
+        Lettre.retirer_source_lettre(publication_id, lettre_id)
+
+
+        # En cas de succès, confirmation à l'utilisateur que le lien publication / lettre à été supprimé.
+        flash("Source supprimée !", "success")
+
+        # L'utilisateur est redirigé vers la page de la lettre, grâce à la fonction unique_lettre précédemment définie.
+        return redirect(url_for("unique_lettre", lettre_id=lettre_id))
+
+    return render_template("pages/source_suppression.html", nom="Correspondance jésuite", lettre=lettre,
+                           publication_id=publication_id)
+
+
+    '''
     # Si cette source est bien dans les données de lettre_volume :
     if publication_id in lettre.lettre_volume:
         # Suppression de cette lettre_volume.
@@ -383,16 +401,8 @@ def supprimer_source(lettre_id):
         # Enregistrement de la lettre sans la publication.
         db.session.add(lettre)
         db.session.commit()
+    '''
 
-        # En cas de succès, confirmation à l'utilisateur que le lien publication / lettre à été supprimé.
-        flash("Source supprimée !", "success")
-
-        # L'utilisateur est redirigé vers la page de la lettre,
-        # grâce à la fonction unique_lettre précédemment définie.
-        return redirect(url_for("unique_lettre", lettre_id=lettre_id))
-
-    return render_template("pages/source_suppression.html", nom="Correspondance jésuite", lettre=lettre,
-                           publication_id=publication_id)
 
 
 # Route pour l'édition des données d'une lettre :
@@ -463,8 +473,8 @@ def edition(lettre_id):
             # Information pour l'utilisateur lui confirmant que la lettre a été modifée et récapitulant les
             # modifications grâce à .format() .
             flash(
-                "La lettre modifiée a pour numéro {}, pour volume : {}, pour rédacteur {}, pour lieu {},"
-                " pour date {}".format(lettre_modifiee.lettre_numero, lettre_modifiee.lettre_volume,
+                "La lettre modifiée a pour numéro {}, pour rédacteur {}, pour lieu {},"
+                " pour date {}".format(lettre_modifiee.lettre_numero,
                                        lettre_modifiee.lettre_redacteur, lettre_modifiee.lettre_lieu,
                                        lettre_modifiee.lettre_date), "success")
 
