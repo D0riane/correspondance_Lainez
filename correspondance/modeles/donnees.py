@@ -297,6 +297,67 @@ class Lettre(db.Model):
             db.session.add(a_contribue)
             db.session.commit()
 
+
+    @staticmethod
+    def retirer_source_lettre(publication_id, lettre_id):
+        """
+        Fonction qui permet de dissocier une publication à une lettre
+            :param publication_id: identifiant une publication à supprimer à la lettre
+            :type: int
+            :param lettre_id: identifiant du document auquel supprimer la publication
+            :type: int
+            :return: Liste d'erreurs si rencontré
+        """
+        # Définition d'une liste d'erreur vide.
+        erreurs = []
+
+        # Récupération de la publication correspondant à l'ID :
+        source = Publication.query.filter(Publication.publication_id == publication_id).first()
+        # Récupération de la lettre correspondant à l'ID :
+        lettre = Lettre.query.filter(Lettre.lettre_id == lettre_id).first()
+
+        # Définition des erreurs (paramètre obligatoire) : Si le champs n'est pas rempli correctement,
+        # une erreur s'ajoute à la liste précédemment définie.
+        if not publication_id:
+            erreurs.append("Il n'y a pas de publication à dissocier")
+        if not lettre_id:
+            erreurs.append("Il n'y a pas de lettre à dissocier")
+
+        # Si les identifiants ne correspondent à rien,
+        if source is None or lettre is None:
+            # rien ne se passe.
+            return
+
+        # Si la longueur de la liste erreurs est supérieur à 0, donc si il y a au moins une erreur :
+        if len(erreurs) > 0:
+            # Renvoi False et la liste erreurs.
+            return False, erreurs
+
+        # Si la source est dans la liste de source contenu dans lettre_volume
+        if source in lettre.lettre_volume:
+            # Elle est ajoutée
+            lettre.lettre_volume.remove(source)
+
+        # Envoi dans la DB et enregistrement
+        db.session.add(lettre)
+        db.session.commit()
+
+        # Enregistrement de la modification dans la table contribution :
+        if lettre:
+            # Récupération l'id de la lettre.
+            lettre_sourcee = Lettre.query.get_or_404(lettre_id)
+            # Récupération l'id de la publication.
+            source = Publication.query.filter(Publication.publication_id == publication_id).first()
+            # Récupération l'id de l'utilisateur courant
+            utilisateur = Utilisateur.query.get(current_user.ut_id)
+            # Préparation des données à l'enregistrement :
+            a_contribue = Contribution(utilisateur=utilisateur, lettre=lettre_sourcee, publication=source)
+            # Envoi dans la DB et enregistrement
+            db.session.add(a_contribue)
+            db.session.commit()
+
+
+
     def to_jsonapi_dict(self):
         """
          Permet de récupérer toutes les données d'une lettre en JSON
