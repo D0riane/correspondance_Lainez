@@ -9,19 +9,26 @@
 </header>
 
 	<div>
-		{% if lettre %}
-	   <p>Êtes-vous certain.e de vouloir supprimer cette source ?</p>
-		<form method="POST" action="{{url_for('supprimer_source',
-		 lettre_id = lettre.lettre_id, publication_id = publication_id.publication_id)}}" style="text-align:center">
-			<div>
-				<button type="submit" class="btn btn-primary" name="publication_id" value="{{publication_id}}">Oui !</button>
-			</div>
+		{% if lettre.lettre_volume %}
 
- 		</form>
+		Quelle source voulez vous supprimer ?
 
+		<form method="POST" action="{{url_for('supprimer_source', lettre_id=lettre.lettre_id)}}" class="">
+    	<div>
+        <p>Ouvrages:</p>
+        <select name="publication_id" class="form-control">
+            {% for publication in lettre.lettre_volume %}
+            <option value="{{publication.publication_id}}">
+				{{publication.publication_titre}} [Tome : {{publication.publication_volume}}]
+			</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="publication_id">
 
-		 <p><a href="{{url_for('unique_lettre', lettre_id = lettre.lettre_id)}}">Retour</a></p>
-		{% endif %}
+        </div>
+	</form>
+	{% endif %}
 
 	</div>
+
 {% endblock %}
