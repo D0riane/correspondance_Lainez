@@ -7,21 +7,11 @@ CREATE TABLE "publication" (
 
 CREATE TABLE "lettre" (
 	"lettre_id"	INTEGER,
-	"lettre_volume"	TEXT NOT NULL,
 	"lettre_numero"	TEXT,
 	"lettre_redacteur"	TEXT,
 	"lettre_lieu"	TEXT NOT NULL,
 	"lettre_date"	TEXT NOT NULL,
-	PRIMARY KEY("lettre_id"),
-	FOREIGN KEY("lettre_volume") REFERENCES "publication"("publication_id")
-);
-
-CREATE TABLE "transcription" (
-	"transcription_id"	INTEGER,
-	"transcription_texte"	TEXT,
-	"transcription_lettre_id"	INTEGER,
-	PRIMARY KEY("transcription_id"),
-	FOREIGN KEY("transcription_lettre_id") REFERENCES "lettre"("lettre_id")
+	PRIMARY KEY("lettre_id")
 );
 
 CREATE TABLE utilisateur (
@@ -32,22 +22,35 @@ CREATE TABLE utilisateur (
   ut_mail TEXT NOT NULL
 );
 
+CREATE TABLE "source" (
+	"source_lettre_id"	INTEGER,
+	"source_publication_id"	INTEGER,
+	PRIMARY KEY("source_lettre_id","source_publication_id"),
+	FOREIGN KEY("source_publication_id") REFERENCES "publication"("publication_id"),
+	FOREIGN KEY("source_lettre_id") REFERENCES "lettre"("lettre_id")
+);
+
+CREATE TABLE "transcription" (
+	"transcription_id"	INTEGER,
+	"transcription_texte"	TEXT,
+	"transcription_lettre_id"	INTEGER,
+	PRIMARY KEY("transcription_id"),
+	FOREIGN KEY("transcription_lettre_id") REFERENCES "lettre"("lettre_id")
+);
+
 CREATE TABLE "contribution" (
 	"contribution_id"	INTEGER,
 	"contribution_lettre_id"	INTEGER,
+	"contribution_publication_id"	INTEGER,
+	"contribution_transcription_id" INTEGER,
 	"contribution_ut_id"	INTEGER,
 	"contribution_date"	TEXT,
 	PRIMARY KEY("contribution_id"),
 	FOREIGN KEY("contribution_lettre_id") REFERENCES "lettre"("lettre_id"),
+	FOREIGN KEY("contribution_publication_id") REFERENCES "publication"("publication_id"),
+	FOREIGN KEY("contribution_transcription_id") REFERENCES "transcription"("transcription_id"),
 	FOREIGN KEY("contribution_ut_id") REFERENCES "utilisateur"("ut_id")
-);
-
-CREATE TABLE "transcrire" (
-	"transcrire_id"	INTEGER,
-	"transcrire_transcription_id"	INTEGER,
-	"transcrire_ut_id"	INTEGER,
-	"transcrire_date"	TEXT,
-	PRIMARY KEY("transcrire_id"),
-	FOREIGN KEY("transcrire_ut_id") REFERENCES "utilisateur"("ut_id"),
-	FOREIGN KEY("transcrire_transcription_id") REFERENCES "transcription"("transcription_id")
 )
+
+
+
