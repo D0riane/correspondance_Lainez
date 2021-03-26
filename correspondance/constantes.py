@@ -3,7 +3,7 @@ from warnings import warn
 # Dans ce fichier, nous déterminons les constantes de notre projet :
 
 # Le nombre de lettre par page lors de l'utilisation de l'objet paginate.
-LETTRES_PAR_PAGE = 10
+RESULTATS_PAR_PAGE = 10
 # Variable nécessaire à la création d'une application Flask : c'est une clé cryptographique.
 SECRET_KEY = "JE SUIS UN SECRET !"
 # La route pour l'API
