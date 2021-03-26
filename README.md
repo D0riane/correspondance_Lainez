@@ -33,7 +33,10 @@ Pré-requis : python3
 L'application se lancera sur votre navigateur sur la page http://127.0.0.1:5000 .
 
 ## Lancement (MAC / Linux)
-A chaque nouveau lancement, il sera nécessaire d'aller dans le dossier (``cd <nom du dossier>``), d'activer l'environnement virtuel (`` source env/bin/activate ``) et de lancer l'application ( ``python run.py`` ) .
+A chaque nouveau lancement, il sera nécessaire de :
+- Aller dans le dossier (``cd <nom du dossier>``)
+- Activer l'environnement virtuel (`` source env/bin/activate ``)
+- Lancer l'application ( ``python run.py`` ) .
 
 ## Auteur 
 Ce projet est proposé par **Doriane Hare** ( [@D0riane](https://github.com/D0riane) )
