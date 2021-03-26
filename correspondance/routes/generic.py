@@ -35,7 +35,12 @@ def accueil():
                            toutes_les_lettres=toutes_les_lettres, dernieres_transcriptions=dernieres_transcriptions,
                            toutes_les_transcriptions=toutes_les_transcriptions)
 
-
+@app.route('/projet')
+def projet():
+    """"
+    Route affichant la présentation du projet
+    """
+    return render_template('pages/projet.html', nom="Correspondance jésuite")
 # ROUTE POUR L'AFFICHAGE DES LETTRES
 
 # Route pour afficher l'ensemble des lettres, présentées sous la forme de tableau avec une pagination.
