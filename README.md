@@ -23,15 +23,17 @@ Toutes les données sont ouvertes et peuvent être récupérées en JSON.
 ## Installation (MAC / Linux)
 Pré-requis : python3
 
-- Cloner ce repository
-- Installer et activer l'environnement virtuel
-- Installer les librairies nécessaires rassemblées dans [requirements.txt](https://github.com/D0riane/correspondance_Lainez/blob/master/requirements.txt) avec la commande ``pip install -r requirements.txt``
-- Lancer l'application avec la commande ``python run.py``
+- Créer un dossier et cloner ce repository : ``git clone https://github.com/D0riane/Correspondance_Lainez.git``
+- Aller dans le dossier : ``cd <nom du dossier>``
+- Installer l'environnement virtuel : ``virtualenv -p python env`` 
+- Activer cet environnement : `` source env/bin/activate ``
+- Installer les librairies nécessaires rassemblées dans [requirements.txt](https://github.com/D0riane/correspondance_Lainez/blob/master/requirements.txt) : ``pip install -r requirements.txt``
+- Lancer l'application : ``python run.py``
 
 L'application se lancera sur votre navigateur sur la page http://127.0.0.1:5000 .
 
 ## Lancement (MAC / Linux)
-A chaque nouveau lancement, il sera nécessaire d'activer l'environnement virtuel et de lancer l'application ( ``python run.py`` ) .
+A chaque nouveau lancement, il sera nécessaire d'aller dans le dossier (``cd <nom du dossier>``), d'activer l'environnement virtuel (`` source env/bin/activate ``) et de lancer l'application ( ``python run.py`` ) .
 
 ## Auteur 
 Ce projet est proposé par **Doriane Hare** ( [@D0riane](https://github.com/D0riane) )
