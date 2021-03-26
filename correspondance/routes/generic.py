@@ -11,7 +11,7 @@ from ..modeles.donnees import Lettre, Contribution, Publication, Transcription
 from ..modeles.utilisateurs import Utilisateur
 
 # Import des constantes
-from ..constantes import LETTRES_PAR_PAGE
+from ..constantes import RESULTATS_PAR_PAGE
 
 
 # Route pour l'accueil : nous y affichons les 5 dernières lettres ajoutées et les 5 dernières transcriptions ajoutées.
@@ -35,12 +35,15 @@ def accueil():
                            toutes_les_lettres=toutes_les_lettres, dernieres_transcriptions=dernieres_transcriptions,
                            toutes_les_transcriptions=toutes_les_transcriptions)
 
+
 @app.route('/projet')
 def projet():
     """"
     Route affichant la présentation du projet
     """
     return render_template('pages/projet.html', nom="Correspondance jésuite")
+
+
 # ROUTE POUR L'AFFICHAGE DES LETTRES
 
 # Route pour afficher l'ensemble des lettres, présentées sous la forme de tableau avec une pagination.
@@ -62,7 +65,7 @@ def lettres():
     # - page = correspondant au numéro de page.
     # - per_page : correspondant au nombre de résultat maximal par page.
     # Sa valeur ici est la variable définit dans le fichier constantes.py.
-    lettres = Lettre.query.paginate(page=page, per_page=LETTRES_PAR_PAGE)
+    lettres = Lettre.query.paginate(page=page, per_page=RESULTATS_PAR_PAGE)
     # Définition de la variable publications permettant l'affichage des données de la classe Publication
     # appelées dans le template.
     publications = Publication.query.all()
@@ -127,7 +130,7 @@ def recherche():
                                             Lettre.lettre_redacteur.like("%{}%".format(motclef)),
                                             Lettre.lettre_lieu.like("%{}%".format(motclef)),
                                             Lettre.lettre_volume.any(Publication.publication_titre.like("%{}%".format(
-                                                motclef))))).paginate(page=page, per_page=LETTRES_PAR_PAGE)
+                                                motclef))))).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
 
         titre = "Résultat(s) de votre recherche pour ' " + motclef + " ' "
     return render_template("pages/recherche.html", resultats=resultats, titre=titre, keyword=motclef)
@@ -155,7 +158,7 @@ def transcriptions():
     # - page = correspondant au numéro de page.
     # - per_page : correspondant au nombre de résultat maximal par page. Sa valeur ici est la variable définit
     # dans le fichier constantes.py.
-    transcriptions = Transcription.query.paginate(page=page, per_page=LETTRES_PAR_PAGE)
+    transcriptions = Transcription.query.paginate(page=page, per_page=RESULTATS_PAR_PAGE)
 
     return render_template('pages/transcriptions.html', nom="Correspondance jésuite",
                            transcriptions=transcriptions)
@@ -395,19 +398,6 @@ def supprimer_source(lettre_id):
 
     return render_template("pages/source_suppression.html", nom="Correspondance jésuite", lettre=lettre,
                            publication_id=publication_id)
-
-
-    '''
-    # Si cette source est bien dans les données de lettre_volume :
-    if publication_id in lettre.lettre_volume:
-        # Suppression de cette lettre_volume.
-        lettre.lettre_volume.remove(publication_id)
-
-        # Enregistrement de la lettre sans la publication.
-        db.session.add(lettre)
-        db.session.commit()
-    '''
-
 
 
 # Route pour l'édition des données d'une lettre :
