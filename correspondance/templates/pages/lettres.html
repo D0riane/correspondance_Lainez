@@ -1,6 +1,13 @@
 {% extends "conteneur.html" %}
 
+{% block titre %}
+    | Les lettres
+{% endblock %}
+
 {%block corps%}
+<div>
+    <br/>
+    <h3 class="text-center">Les lettres</h3>
 
     {% if lettres %}
 
@@ -11,6 +18,7 @@
             <a class="btn btn-outline-success" role="button" href="{{url_for('creation')}}">Ajouter une lettre</a>
             {% endif %}
         </h4>
+        <br/>
     </div>
 
         <table class="table">
@@ -64,9 +72,11 @@
                 {%- endfor %}
               </ul>
         </nav>
-
+</div>
         {% else %}
+<div>
         <p>La base de données est en cours de constitution</p>
+    </div>
         {% endif %}
 
 <br/>

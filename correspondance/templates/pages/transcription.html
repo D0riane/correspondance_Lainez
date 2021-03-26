@@ -1,5 +1,9 @@
 {% extends "conteneur.html" %}
 
+{% block titre %}
+    {%if transcription %}| Transcription {{transcription.transcription_id}} {% endif %}
+{% endblock %}
+
 {% block corps %}
 
     {% if transcription %}

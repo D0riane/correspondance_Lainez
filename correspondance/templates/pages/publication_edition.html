@@ -1,5 +1,9 @@
 {% extends "conteneur.html" %}
 
+{% block titre %}
+    | Edition de l'ouvrage {{publication_modifiee.publication_id}}
+{% endblock %}
+
 {% block corps %}
 
 <h3>Edition d'un ouvrage : {{publication_modifiee.publication_titre}} {% if publication_modifiee.publication_volume %}
