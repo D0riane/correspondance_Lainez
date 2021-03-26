@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Correspondance jésuite {%block titre%}{%endblock%}</title>
+        <title>Correspondance Jésuite {%block titre%}{%endblock%}</title>
         {% include "partials/metadata.html" %}
         {% include "partials/css.html"%}
         <style type="text/css">
@@ -21,7 +21,7 @@
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-            <a class="navbar-brand" href="{{ url_for('accueil') }}">Correspondance Jésuites</a>
+            <a class="navbar-brand" href="{{ url_for('accueil') }}">Correspondance Jésuite</a>
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -29,6 +29,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('transcriptions')}}">Les transcriptions</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{url_for('publications')}}">Les sources</a>
                 </li>
 
                 {% if not current_user.is_authenticated %}
@@ -79,7 +82,7 @@
 
     <footer class="bg-dark text-center text-white">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Pour plus d'information sur nos sources, <a  class="text-white" href={{url_for('publications')}}>cliquez ici</a>.
+        <a  class="text-white" href={{url_for('projet')}}>Plus d'informations sur ce projet</a>
         </div>
     </footer>
 
