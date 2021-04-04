@@ -5,40 +5,67 @@
 {% endblock %}
 
 {%block corps%}
-<h3 class="text-center">Le projet</h3>
-<br/>
-<p>
-Ce projet a été mené dans le cadre de l'évaluation finale du cours de Python de M. Clérice,
-    à l'École nationale des chartes, pour l'année académique 2020-2021.</p>
+<div>
+    <div>
+        <h3 class="text-center">Le projet <i>Correspondance Jésuite</i></h3>
+        <br/>
+    </div>
+    <div>
+        <h6>Cadre du projet</h6>
+        <p>
+            Ce projet a été mené dans le cadre de l'évaluation finale du cours de Python de M. Clérice,
+            à l'École nationale des chartes, pour l'année académique 2020-2021.<br/>
+            Il a été réalisé par Doriane Hare.
+            <a href="https://github.com/D0riane">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </p>
+    </div>
+    <div>
+        <h6>Consignes</h6>
+        <p>
+            Les consignes étaient de développer une application web avec base de données relationnelle,
+            comprenant formulaire pour ajout, suppression, édition. Il devait être possible de naviguer dans la
+            collection, d'y faire une recherche simple voire complexe, un index pouvait être ajouté.
+        </p>
+    </div>
 
-<p>
-    Les consignes étaient de "développer une application avec base de données relationnelle,
-    comprenant formulaire pour ajout, suppression, édition. Il doit être possible de naviguer dans la collection,
-    d'y faire une recherche simple voire complexe, un index peut être ajouté."</p>
+    <div>
+        <h6>L'application</h6>
+        <p>
+            Correspondance Jésuite est une application web pensée comme un outil collaboratif pour centraliser
+            l'importante correspondance reçue par le général Lainez, Préposé général de la Compagnie de Jésus entre
+            1558 et 1565. Elle rassemble les données issues de quelques
+            <a href="http://www.sjweb.info/arsi/en/publications/ihsi/monumenta/">volumes numérisés</a>
+            de la Monumenta Historica Societatis Iesu, concernant principalement la correspondance européenne.
+        </p>
+    </div>
+    <div>
+        <h6>Les objectifs</h6>
+        <p>
+            <ul>
+                <li>Consulter les données : Les données sont consultables par tous. Chacun peut naviguer pour consulter
+                    les lettres, les transcriptions et les sources répertoriées dans la base de données.</li>
+                <li>Participer à l'enrichissement des données en ajoutant, éditant et supprimant du contenu, c'est-à-dire
+                    des lettres, des transcriptions et des sources. Ces fonctionnalités sont réservées aux utilisateurs.
+                    Après s'être inscrit, l'utilisateur peut participer à ce projet collaboratif.</li>
+                <li>Toutes les données sont ouvertes et peuvent être affichées en JSON en cliquant sur le bouton
+                    <button type="button" class="btn btn-outline-dark">JSON</button> suivant le standard JSONAPI 1.0.
+                </li>
+            </ul>
 
-<p>
-    Correspondance Jésuite est une application web pensée comme un outil collaboratif pour centraliser l'importante
-    correspondance reçue par le général Lainez, Préposé général de la Compagnie de Jésus entre 1558 et 1565.
-    Pour l'instant, elle rassemble les lettres issues de quelques
-    <a href="http://www.sjweb.info/arsi/en/publications/ihsi/monumenta/">volumes numérisés</a> de la
-    Monumenta Historica Societatis Iesu, concernant principalement la correspondance européenne.</p>
-<p>
-
-Elle répond à deux objectifs :
-<ul>
-    <li>Consulter les données : Les données sont consultables par tous. Chacun peut naviguer pour consulter
-        les lettres, les transcriptions et les sources répertoriées dans la base de données.</li>
-    <li>Participer à l'enrichissement des données en ajoutant, éditant et supprimant du contenu, c'est-à-dire
-        des lettres, des transcriptions et des sources. Ces fonctionnalités sont réservées aux utilisateurs.
-        Après s'être inscrit, l'utilisateur peut participer à ce projet collaboratif.</li>
-    </ul>
-Toutes les données sont ouvertes et peuvent être récupérées en JSON.
-</p>
-
-<p>
-    Ce projet a été réalisé par Doriane Hare. <a href="https://github.com/D0riane"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-</svg></a>
-</p>
-<br/>
+        </p>
+    </div>
+    <div>
+        <h6>Aspects techniques</h6>
+            <ul>
+                <li>Cette application web a été développée avec le microframework Flask.</li>
+                <li>La base de données relationnelle a été développée avec l'outil DB Browser for SQLite. </li>
+                <li>L'ORM SqlAlchemy a été utilisé pour dialoguer avec le SGBD.</li>
+            </ul>
+        </p>
+    </div>
+</div>
 {%endblock%}

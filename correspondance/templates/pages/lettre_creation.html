@@ -6,37 +6,42 @@
 
 {% block corps %}
 
-<h1>Formulaire de création</h1>
+<h3><br/>Formulaire de création d'une lettre</h3>
 
-<form method="post" action="{{url_for('creation')}}" class="">
+<div>
+<form method="post" action="{{url_for('creation')}}">
 
-
-    <div>
+    <div class="form-group">
+        <br/>
         <label for="champs_num">Numéro de la  lettre : </label>
-        <input type="text" name="lettre_numero" placeholder="Identifiant de la lettre" id="champs_num">
+        <input type="text" class="form-control" name="lettre_numero" placeholder="Identifiant de la lettre dans le volume" id="champs_num">
     </div>
 
-    <div>
+    <div class="form-group">
+        <br/>
         <label for="champs_redacteur">Rédacteur : </label>
-        <input type="text" name="lettre_redacteur" placeholder="Auteur de la lettre" id="champs_redacteur">
+        <input type="text" class="form-control" name="lettre_redacteur" placeholder="Auteur de la lettre" id="champs_redacteur">
     </div>
 
-    <div>
+    <div class="form-group">
+        <br/>
         <label for="champs_lieu">Lieu d'envoi : </label>
-        <input type="text" name="lettre_lieu" placeholder="Lieu d'envoi de la lettre" id="champs_lieu">
+        <input type="text" class="form-control" name="lettre_lieu" placeholder="Lieu d'envoi de la lettre" id="champs_lieu">
     </div>
 
-    <div>
-        <label for="champs_date">Date de la lettre : </label>
-        <input type="text" name="lettre_date" placeholder="Date de la lettre" id="champs_date">
+    <div class="form-group">
+        <br/>
+        <label for="champs_date" >Date de la lettre : </label>
+        <input type="text" class="form-control" name="lettre_date" placeholder="Date de la lettre" id="champs_date">
     </div>
 
-    <button type="submit">Sauvegarder</button>
-
-
+    <button class="btn btn-primary" type="submit">Sauvegarder</button>
 </form>
+</div>
 
-
-
-
+<div>
+    <br/>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+</div>
 {% endblock %}

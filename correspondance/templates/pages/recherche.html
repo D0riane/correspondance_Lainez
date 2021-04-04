@@ -5,7 +5,9 @@
 {% block corps %}
 <h1>{{titre}}</h1>
     {% if resultats %}
-    <p>Il y a {{resultats.total}} lettres qui répondent à votre requête :</p>
+    <p>Il y a {{resultats.total}} lettres qui répondent à votre requête :
+        <a class="btn btn-outline-dark" role="button" href={{url_for('api_lettres_recherche',keyword=keyword)}}>JSON</a>
+    </p>
 
 
 <table class="table">
@@ -34,6 +36,8 @@
                         {% endfor %}
                 </tbody>
         </table>
+
+
 
     <nav aria-label="research-pagination">
       <ul class="pagination">

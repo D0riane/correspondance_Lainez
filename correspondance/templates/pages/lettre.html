@@ -13,11 +13,12 @@
             <th>
                 <h3>Lettre {{lettre.lettre_id}}</h3>
             </th>
-            <th>
+            <th width=20%>
             {% if current_user.is_authenticated %}
                 <a class="btn btn-outline-danger" role="button" href="{{url_for('suppression_lettre', lettre_id =lettre.lettre_id)}}">Supprimer cette lettre</a>
                 <a class="btn btn-outline-success" role="button" href="{{url_for('edition', lettre_id =lettre.lettre_id)}}">Editer cette lettre</a>
             {% endif %}
+                <a class="btn btn-outline-dark" role="button" href="{{url_for('api_lettre_unique', lettre_id=lettre.lettre_id)}}">JSON</a>
             </th>
         </tr>
         </thead>
@@ -25,6 +26,11 @@
         <tr>
             <td>
                 <ul>
+                    <li>
+                        {% if lettre.lettre_numero %}
+                        N° de la lettre dans le volume : {{lettre.lettre_numero}}
+                        {% endif %}
+                    </li>
                     <li>
                         {% if lettre.lettre_redacteur %}
                         Missionnaire : {{lettre.lettre_redacteur}}
@@ -48,13 +54,12 @@
                 Source :
                 <ul>
                 {% for publication in lettre.lettre_volume %}
-
-                    {{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .
+                    <li>{{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .</li>
                 {% endfor %}
+                </ul>
 
                     {% if current_user.is_authenticated %}
-
-                    <a  class="btn btn-outline-danger" role="button"
+                        <a  class="btn btn-outline-danger" role="button"
                         href="{{url_for('supprimer_source', lettre_id = lettre.lettre_id)}}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -64,10 +69,6 @@
                     {% endif %}
 
 
-
-
-
-                </ul>
                 {% if current_user.is_authenticated %}
                 <a class="btn btn-outline-success" role="button"
                    href="{{url_for('source', lettre_id=lettre.lettre_id)}}">
@@ -87,7 +88,8 @@
         <tr>
             <td>
                 {% if lettre.transcription_texte %}
-                Transcription :
+                <br/>
+                <h6  class="text-center">Transcription </h6>
                 <br/>
                 <p>
                     {{transcription.transcription_texte}}</p>
@@ -112,15 +114,21 @@
         </tr>
         </tbody>
     </table>
+</div>
 
     {% else %}
-        <p>La base de données est en cours de constitution</p>
+    <div>
+        <p>Cette lettre n'existe pas ou plus dans notre base de données.</p>
+    </div>
     {% endif %}
-</div>
+
 <br/>
 <br/>
     <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
     <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+{% if lettre %}
+
+    {% endif %}
 <br/>
 <br/>
 <br/>

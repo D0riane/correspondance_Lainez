@@ -5,13 +5,13 @@
 {% endblock %}
 
 {%block corps%}
-<h3 class="text-center">Les transcriptions</h3>
-
-    {% if transcriptions %}
+<div>
+    <br/>
+    <h3 class="text-center">Les transcriptions</h3>
 
     <div>
-        <br/>
-        <h4 class="text-center">{{transcriptions.total}} transcriptions actuellement dans la base.</h4>
+    {% if transcriptions %}
+    <h4 class="text-center">{{transcriptions.total}} transcriptions actuellement dans la base.</h4>
     </div>
 
     <div>
@@ -19,14 +19,15 @@
             <thead>
             <tr>
                 <th>Lettres transcrites</th>
-                <th></th>
+                <th>Consulter</th>
             </tr>
             </thead>
             <tbody>
             {% for transcription in transcriptions.items %}
             <tr>
                 <td><a href={{url_for('unique_lettre',lettre_id=transcription.transcription_lettre_id)}}>L-{{transcription.transcription_lettre_id}}</a></td>
-                <td><a class="btn btn-outline-dark" role="button"  href={{url_for('afficher_transcription',transcription_id=transcription.transcription_id)}}>Voir la transcription</a></td>
+                <td><a class="btn btn-outline-dark" role="button" href={{url_for('afficher_transcription',transcription_id=transcription.transcription_id)}}>
+                    Voir la transcription {{transcription.transcription_id}}</a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -56,13 +57,18 @@
                 {%- endfor %}
               </ul>
     </nav>
-
+</div>
     {% else %}
+    <div>
     <p>La base de données est en cours de constitution</p>
+    </div>
     {% endif %}
 
 <br/>
     <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('api_transcriptions')}}">JSON</a>
+
+
 <br/>
 <br/>
 <br/>

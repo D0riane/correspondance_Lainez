@@ -6,9 +6,9 @@
 
 {% block corps %}
 
-    <h1>Ajouter une transcription : </h1>
+    <h3>Ajouter une transcription</h3>
 
-    <h3>Lettre {{lettre_a_transcrire.lettre_id}} :
+    <h4>Lettre {{lettre_a_transcrire.lettre_id}} :
         {% if lettre_a_transcrire.lettre_redacteur %}
             de {{lettre_a_transcrire.lettre_redacteur}}
         {% endif %}
@@ -18,16 +18,22 @@
         {% if lettre_a_transcrire.lettre_date %}
             ( {{lettre_a_transcrire.lettre_date}} )
         {% endif %}
-    </h3>
+    </h4>
 
-    <form method="post" action="{{url_for('nouvelle_transcription', lettre_id=lettre_a_transcrire.lettre_id)}}" class="">
-        <div>
+    <form method="post" action="{{url_for('nouvelle_transcription', lettre_id=lettre_a_transcrire.lettre_id)}}">
+        <div class="form-group">
+            <br/>
             <label for="champs_transcription">Transcription</label>
             <textarea class="form-control" name="transcription_lettre" placeholder="Ici votre transcription" id="champs_transcription"></textarea>
         </div>
-        <button type="submit">Sauvegarder</button>
+        <br/>
+        <button class="btn btn-primary" type="submit">Sauvegarder</button>
     </form>
 
-
+<div>
+    <br/>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+</div>
 
 {% endblock %}

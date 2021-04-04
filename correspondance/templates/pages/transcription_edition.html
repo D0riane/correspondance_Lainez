@@ -6,14 +6,24 @@
 
 {% block corps %}
 
-    <h1>Modifier une transcription : </h1>
+    <br/>
+    <h3>Modifier une transcription : </h3>
 
-    <form method="post" action="{{url_for('modification_transcription', transcription_id=transcription_a_modifier.transcription_id)}}" class="">
-        <div>
-            <label for="champs_transcription">Transcription</label>
-            <textarea class="form-control" name="transcription_lettre_modifiee" placeholder="Ici votre transcription" id="champs_transcription"></textarea>
+    <form method="post" action="{{url_for('modification_transcription', transcription_id=transcription_a_modifier.transcription_id)}}">
+        <div class="form-group">
+            <br/>
+            <label for="champs_transcription">Transcription :</label>
+            <textarea class="form-control" name="transcription_lettre_modifiee" placeholder="Ici votre transcription"
+                      id="champs_transcription">{{transcription_a_modifier.transcription_texte}}</textarea>
         </div>
-        <button type="submit">Sauvegarder</button>
+        <br/>
+        <button class="btn btn-primary" type="submit">Sauvegarder</button>
     </form>
+
+<div>
+    <br/>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+</div>
 
 {% endblock %}

@@ -29,6 +29,7 @@
                                 <th>Lieu</th>
                                 <th>Auteur</th>
                                 <td>Volume</td>
+                                <td>Transcription</td>
                         </tr>
                 </thead>
                 <tbody>
@@ -40,8 +41,16 @@
                             <td>{{lettre.lettre_redacteur}}</td>
                             <td width=40% >{% if lettre.lettre_volume %}
                                 {% for publication in lettre.lettre_volume %}
-                                {{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .
+                                {{publication.publication_titre}}
+                                {% if publication.publication_volume%}
+                                [Tome : {{publication.publication_volume}}] .
+                                {% endif %}
                                 {% endfor %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if lettre.transcription_texte %} Oui
+                                {% else%} Non
                                 {% endif %}
                             </td>
                         </tr>
@@ -81,6 +90,7 @@
 
 <br/>
     <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('api_lettres')}}">JSON</a>
 <br/>
 <br/>
 <br/>
