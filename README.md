@@ -24,19 +24,19 @@ Toutes les données sont ouvertes et peuvent être récupérées en JSON.
 Pré-requis : python3
 
 - Créer un dossier et cloner ce repository : ``git clone https://github.com/D0riane/Correspondance_Lainez.git``
-- Aller dans le dossier : ``cd <nom du dossier>``
-- Installer l'environnement virtuel : ``virtualenv -p python env`` 
+- Aller dans le dossier de l'application : ``cd Correspondance_Lainez``
+- Installer l'environnement virtuel : ``virtualenv -p python3 env`` 
 - Activer cet environnement : `` source env/bin/activate ``
 - Installer les librairies nécessaires rassemblées dans [requirements.txt](https://github.com/D0riane/correspondance_Lainez/blob/master/requirements.txt) : ``pip install -r requirements.txt``
-- Lancer l'application : ``python run.py``
+- Lancer l'application : ``python3 run.py``
 
 L'application se lancera sur votre navigateur sur la page http://127.0.0.1:5000 .
 
 ## Lancement (MAC / Linux)
 A chaque nouveau lancement, il sera nécessaire de :
-- Aller dans le dossier (``cd <nom du dossier>``)
+- Aller dans le dossier de l'application : ``cd Correspondance_Lainez``
 - Activer l'environnement virtuel (`` source env/bin/activate ``)
-- Lancer l'application ( ``python run.py`` ) .
+- Lancer l'application ( ``python3 run.py`` ) .
 
 ## Auteur 
 Ce projet est proposé par **Doriane Hare** ( [@D0riane](https://github.com/D0riane) )
