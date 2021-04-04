@@ -393,7 +393,6 @@ def source(lettre_id):
 def supprimer_source(lettre_id):
     """
     Route permettant de retirer un lien publication / lettre.
-    (Ne fonctionne malheureusement pas...)
     :param lettre_id: Identifiant de la lettre
     :type lettre_id: int
     :returns: template HTML avec le formulaire d'ajout de source à la lettre
