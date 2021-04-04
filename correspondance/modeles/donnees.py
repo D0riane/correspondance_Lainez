@@ -297,7 +297,6 @@ class Lettre(db.Model):
             db.session.add(a_contribue)
             db.session.commit()
 
-
     @staticmethod
     def retirer_source_lettre(publication_id, lettre_id):
         """
@@ -355,8 +354,6 @@ class Lettre(db.Model):
             # Envoi dans la DB et enregistrement
             db.session.add(a_contribue)
             db.session.commit()
-
-
 
     def to_jsonapi_dict(self):
         """
