@@ -11,7 +11,7 @@
                 .hero  {
                     background-position: center center;
                     padding:10vh;
-                    background-image: url({{url_for("static", filename="images/plafond_San_Ign.jpg")}});
+                    background-image: url({{url_for("static", filename="images/lettre_3.jpeg")}});
                 }
                 .container .hero {
                     background-image: none;
@@ -51,10 +51,10 @@
                     <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Recherche" aria-label="Recherche">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Rechercher</button>
                 </form>
+
+
+
               </nav>
-
-
-
 
         {% block afternav %}{%endblock%}
 
@@ -80,10 +80,12 @@
 
     </body>
 
-    <footer class="bg-dark text-center text-white">
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+{% block footer %}
+    <footer class="bg-dark" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="container" style="padding: 1em; text-align: center">
         <a  class="text-white" href={{url_for('projet')}}>Plus d'informations sur ce projet</a>
         </div>
     </footer>
+{% endblock %}
 
 </html>
