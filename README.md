@@ -23,7 +23,7 @@ Toutes les données sont ouvertes et peuvent être récupérées en JSON.
 ## Installation (MAC / Linux)
 Pré-requis : python3
 
-- Créer un dossier et cloner ce repository : ``git clone https://github.com/D0riane/Correspondance_Lainez.git``
+- Créer un dossier et cloner ce repository dedans : ``git clone https://github.com/D0riane/Correspondance_Lainez.git``
 - Aller dans le dossier de l'application : ``cd Correspondance_Lainez``
 - Installer l'environnement virtuel : ``virtualenv -p python3 env`` 
 - Activer cet environnement : `` source env/bin/activate ``
