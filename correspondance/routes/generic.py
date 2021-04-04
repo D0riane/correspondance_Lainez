@@ -126,7 +126,8 @@ def recherche():
     # dans la table lettre : date, rédacteur, lieu, volume. Pour volume, on utilise .any afin de requêter aussi dans
     # la table Publication.
     if motclef:
-        resultats = Lettre.query.filter(or_(Lettre.lettre_date.like("%{}%".format(motclef)),
+        resultats = Lettre.query.filter(or_(Lettre.lettre_numero.like("%{}%".format(motclef)),
+                                            Lettre.lettre_date.like("%{}%".format(motclef)),
                                             Lettre.lettre_redacteur.like("%{}%".format(motclef)),
                                             Lettre.lettre_lieu.like("%{}%".format(motclef)),
                                             Lettre.lettre_volume.any(Publication.publication_titre.like("%{}%".format(
@@ -165,7 +166,7 @@ def transcriptions():
 
 
 # Route vers chacune des transcription grâce à leur id.
-@app.route('/transcription/<int:transcription_id>')
+@app.route('/transcriptions/<int:transcription_id>')
 def afficher_transcription(transcription_id):
     """Route permettant d'afficher les transcriptions
     :param transcription_id: Identifiant de la transcription
@@ -204,6 +205,26 @@ def publications():
     publications = Publication.query.all()
 
     return render_template('pages/publications.html', nom="Correspondance jésuite", publications=publications)
+
+
+# Route pour consulter la liste des lettres publiées dans chaque ouvrage :
+@app.route('/publications/<int:publication_id>', methods=["POST", "GET"])
+def unique_publication(publication_id):
+    """
+    Route permettant l'affichage des données d'un seul ouvrage
+    :param publication_id: Identifiant de la lettre
+    :type publication_id: int
+    :return: template HTML (publication.html)
+    """
+    # Récupération de l'ouvrage grâce à publication_id en utilisant .get()
+    unique_publication = Publication.query.get(publication_id)
+
+    # Jointure pour afficher les lettres les données de la table lettre qui concernent les lettres publiée dans cet
+    # ouvrage.
+    lettres = Lettre.query.join(Lettre.lettre_volume).filter(Publication.publication_id == publication_id).all()
+
+    return render_template('pages/publication.html', nom="Correspondance jésuite", publication=unique_publication,
+                           lettres=lettres)
 
 
 # ROUTE POUR L'AUTHENTICATION DES UTILISATEURS :
@@ -388,7 +409,6 @@ def supprimer_source(lettre_id):
     if publication_id:
         # On les envoi avec l'ID de la lettre à la static methode sourcer_lettre de la classe Lettre.
         Lettre.retirer_source_lettre(publication_id, lettre_id)
-
 
         # En cas de succès, confirmation à l'utilisateur que le lien publication / lettre à été supprimé.
         flash("Source supprimée !", "success")
@@ -765,7 +785,7 @@ def edition_publication(publication_id):
             # On ajoute les données précédemment récupérées du formulaire à la publication à modifier précédemment
             # selectionnée.
             publication_modifiee.publication_titre = publication_titre
-            publication_modifiee.lettre_volume = publication_volume
+            publication_modifiee.publication_volume = publication_volume
 
             # Ajout des nouvelles des données à la place des anciennes et enregistrement.
             db.session.add(publication_modifiee)

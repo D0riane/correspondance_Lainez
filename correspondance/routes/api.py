@@ -140,7 +140,8 @@ def api_lettres_recherche():
 
     # Si il y a un mot clé, on filtre grâce à .like les résultats de la recherche.
     if motclef:
-        query = Lettre.query.filter(or_(Lettre.lettre_date.like("%{}%".format(motclef)),
+        query = Lettre.query.filter(or_(Lettre.lettre_numero.like("%{}%".format(motclef)),
+                                        Lettre.lettre_date.like("%{}%".format(motclef)),
                                         Lettre.lettre_redacteur.like("%{}%".format(motclef)),
                                         Lettre.lettre_lieu.like("%{}%".format(motclef)),
                                         Lettre.lettre_volume.any(Publication.publication_titre.like("%{}%".format(
@@ -166,4 +167,3 @@ def api_lettres_recherche():
 
     response = jsonify(dict_resultats)
     return response
-
