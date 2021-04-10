@@ -1,0 +1,72 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if transcription %}| Transcription {{transcription.transcription_id}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+
+    {% if transcription %}
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <h3>Transcription de la lettre {{transcription.transcription_lettre_id}}
+
+                {% if current_user.is_authenticated %}
+                <a class="btn btn-outline-danger" role="button" href="{{url_for('suppression_transcription', transcription_id =transcription.transcription_id)}}">Supprimer cette transcription</a>
+                <a class="btn btn-outline-success" role="button" href="{{url_for('modification_transcription', transcription_id = transcription.transcription_id)}}">Modifier cette transcription</a>
+                {% endif %}
+                    </h3>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>
+                <p>
+                    {% if transcription %}
+                    {{transcription.transcription_texte}}
+                    {% endif %}
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><small><em>
+                    {% if transcription.transcription_id %}
+                    Transcription proposée par
+                    {% if utilisateur.ut_id %}
+                    {{utilisateur.ut_nom}}
+                    {% endif %}
+                    (dernière modification le {{transcrire.contribution_date}})
+                    {% endif %}
+                </em></small></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+    {% else %}
+    <div>
+        <p>Cette transcription n'existe pas ou plus dans notre base de données.</p>
+    </div>
+    {% endif %}
+
+<div>
+    <br/>
+        <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+        <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+        {% if transcription %}
+        <a class="btn btn-outline-dark" role="button" href="{{url_for('api_transcription_unique', transcription_id = transcription.transcription_id)}}">JSON</a>
+    {% endif %}
+    <br/>
+    <br/>
+    <br/>
+</div>
+
+{% endblock %}

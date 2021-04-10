@@ -1,0 +1,22 @@
+{% extends "conteneur.html" %}
+
+{% block titre %} | Suppression de la transcription {{transcription.transcription_id}} {%endblock%}
+
+{% block corps %}
+<br/>
+<header>
+	<h3>Supprimer une transcription</h3>
+</header>
+
+	<div>
+		{% if transcription %}
+	   <p>Êtes-vous certain.e de vouloir supprimer cette transcription ?</p>
+		<form method="POST" action="{{url_for('suppression_transcription', transcription_id = transcription.transcription_id)}}" style="text-align:center">
+			<div>
+				<button type="submit" class="btn btn-primary">Je confirme</button>
+			</div>
+ 		</form>
+		 <p><a href="{{url_for('lettres')}}">Retour</a></p>
+		{% endif %}
+	</div>
+{% endblock %}
