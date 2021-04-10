@@ -134,12 +134,13 @@ def recherche():
                                                 motclef))))).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
 
         titre = "Résultat(s) de votre recherche pour ' " + motclef + " ' "
-    return render_template("pages/recherche.html", resultats=resultats, titre=titre, keyword=motclef)
+    return render_template("pages/recherche.html", nom="Correspondance jésuite", resultats=resultats, titre=titre,
+                           keyword=motclef)
 
 
 # ROUTE POUR L'AFFICHAGE DES TRANSCRIPTIONS
 
-# # Route pour afficher l'ensemble des transcriptions, présentées sous la forme de tableau avec une pagination.
+# Route pour afficher l'ensemble des transcriptions, présentées sous la forme de tableau avec une pagination.
 @app.route('/transcriptions', methods=["POST", "GET"])
 def transcriptions():
     """"
@@ -186,7 +187,7 @@ def afficher_transcription(transcription_id):
     # l'auteur de la transcription.
     utilisateur = Utilisateur.query.filter(db.and_(
         Utilisateur.ut_id == Contribution.contribution_ut_id,
-        Transcription.transcription_id == transcription_id)).first()
+        Contribution.contribution_transcription_id == transcription_id)).first()
 
     return render_template("pages/transcription.html", nom="Correspondance jésuite",
                            transcription=transcription, transcrire=transcrire, utilisateur=utilisateur)
