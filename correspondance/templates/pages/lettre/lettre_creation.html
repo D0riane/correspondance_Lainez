@@ -1,0 +1,47 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    | Ajouter une lettre
+{% endblock %}
+
+{% block corps %}
+
+<h3><br/>Formulaire de création d'une lettre</h3>
+
+<div>
+<form method="post" action="{{url_for('creation')}}">
+
+    <div class="form-group">
+        <br/>
+        <label for="champs_num">Numéro de la  lettre : </label>
+        <input type="text" class="form-control" name="lettre_numero" placeholder="Identifiant de la lettre dans le volume" id="champs_num">
+    </div>
+
+    <div class="form-group">
+        <br/>
+        <label for="champs_redacteur">Rédacteur : </label>
+        <input type="text" class="form-control" name="lettre_redacteur" placeholder="Auteur de la lettre" id="champs_redacteur">
+    </div>
+
+    <div class="form-group">
+        <br/>
+        <label for="champs_lieu">Lieu d'envoi : </label>
+        <input type="text" class="form-control" name="lettre_lieu" placeholder="Lieu d'envoi de la lettre" id="champs_lieu">
+    </div>
+
+    <div class="form-group">
+        <br/>
+        <label for="champs_date" >Date de la lettre : </label>
+        <input type="text" class="form-control" name="lettre_date" placeholder="Date de la lettre" id="champs_date">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Sauvegarder</button>
+</form>
+</div>
+
+<div>
+    <br/>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('lettres')}}">Retourner aux lettres</a>
+</div>
+{% endblock %}
