@@ -70,7 +70,7 @@ def lettres():
     # appelées dans le template.
     publications = Publication.query.all()
 
-    return render_template('pages/lettres.html', nom="Correspondance jésuite",
+    return render_template('pages/lettre/lettres.html', nom="Correspondance jésuite",
                            lettres=lettres, publications=publications)
 
 
@@ -94,7 +94,7 @@ def unique_lettre(lettre_id):
     transcription = Transcription.query.filter(db.and_(Transcription.transcription_lettre_id == Lettre.lettre_id,
                                                        Lettre.lettre_id == lettre_id)).first()
 
-    return render_template("pages/lettre.html", nom="Correspondance jésuite",
+    return render_template("pages/lettre/lettre.html", nom="Correspondance jésuite",
                            lettre=unique_lettre, publication=publication, transcription=transcription)
 
 
@@ -162,7 +162,7 @@ def transcriptions():
     # dans le fichier constantes.py.
     transcriptions = Transcription.query.paginate(page=page, per_page=RESULTATS_PAR_PAGE)
 
-    return render_template('pages/transcriptions.html', nom="Correspondance jésuite",
+    return render_template('pages/transcription/transcriptions.html', nom="Correspondance jésuite",
                            transcriptions=transcriptions)
 
 
@@ -189,7 +189,7 @@ def afficher_transcription(transcription_id):
         Utilisateur.ut_id == Contribution.contribution_ut_id,
         Contribution.contribution_transcription_id == transcription_id)).first()
 
-    return render_template("pages/transcription.html", nom="Correspondance jésuite",
+    return render_template("pages/transcription/transcription.html", nom="Correspondance jésuite",
                            transcription=transcription, transcrire=transcrire, utilisateur=utilisateur)
 
 
@@ -205,7 +205,7 @@ def publications():
     # Récupération de toutes les publications.
     publications = Publication.query.all()
 
-    return render_template('pages/publications.html', nom="Correspondance jésuite", publications=publications)
+    return render_template('pages/publication/publications.html', nom="Correspondance jésuite", publications=publications)
 
 
 # Route pour consulter la liste des lettres publiées dans chaque ouvrage :
@@ -224,7 +224,7 @@ def unique_publication(publication_id):
     # ouvrage.
     lettres = Lettre.query.join(Lettre.lettre_volume).filter(Publication.publication_id == publication_id).all()
 
-    return render_template('pages/publication.html', nom="Correspondance jésuite", publication=unique_publication,
+    return render_template('pages/publication/publication.html', nom="Correspondance jésuite", publication=unique_publication,
                            lettres=lettres)
 
 
@@ -253,9 +253,9 @@ def inscription():
         # Si la static method ne renvoi pas True, un message informe l'utilisateur des erreurs rencontrées.
         else:
             flash("Les erreurs suivantes ont été rencontrées : " + ",".join(donnees), "error")
-            return render_template("pages/inscription.html")
+            return render_template("pages/utilisateur/inscription.html")
     else:
-        return render_template("pages/inscription.html")
+        return render_template("pages/utilisateur/inscription.html")
 
 
 # Route pour la connexion d'un utilisateur.
@@ -290,7 +290,7 @@ def connexion():
         else:
             flash("Les identifiants n'ont pas été reconnus", "error")
 
-    return render_template("pages/connexion.html")
+    return render_template("pages/utilisateur/connexion.html")
 
 
 # Nom de la fonction vers laquelle l'utilisateur sera dirigé quand il doit se connecter.
@@ -349,7 +349,7 @@ def creation():
         else:
             flash("Les erreurs suivantes ont été rencontrées : " + " ; ".join(donnees_lettre), "danger")
 
-    return render_template("pages/lettre_creation.html")
+    return render_template("pages/lettre/lettre_creation.html")
 
 
 # Route pour lier une lettre à sa/ses publication(s) :
@@ -385,7 +385,7 @@ def source(lettre_id):
         # L'utilisateur est redirigé vers la page de la lettre, grâce à la fonction unique_lettre précédemment définie.
         return redirect(url_for("unique_lettre", lettre_id=lettre_id))
 
-    return render_template("pages/source_ajouter.html", nom="Correspondance jésuite", lettre=lettre_a_sourcer,
+    return render_template("pages/lettre/source_ajouter.html", nom="Correspondance jésuite", lettre=lettre_a_sourcer,
                            publications=publications)
 
 
@@ -416,7 +416,7 @@ def supprimer_source(lettre_id):
         # L'utilisateur est redirigé vers la page de la lettre, grâce à la fonction unique_lettre précédemment définie.
         return redirect(url_for("unique_lettre", lettre_id=lettre_id))
 
-    return render_template("pages/source_suppression.html", nom="Correspondance jésuite", lettre=lettre,
+    return render_template("pages/lettre/source_suppression.html", nom="Correspondance jésuite", lettre=lettre,
                            publication_id=publication_id)
 
 
@@ -497,7 +497,7 @@ def edition(lettre_id):
             # grâce à la fonction lettres précédemment définie.
             return redirect(url_for("lettres"))
 
-    return render_template("pages/lettre_edition.html", nom="Correspondance jésuite", lettre_modifiee=lettre_modifiee)
+    return render_template("pages/lettre/lettre_edition.html", nom="Correspondance jésuite", lettre_modifiee=lettre_modifiee)
 
 
 # Route pour la suppression d'une lettre de la DB :
@@ -540,7 +540,7 @@ def suppression_lettre(lettre_id):
         # grâce à la fonction lettres précédemment définie.
         return redirect(url_for('lettres'))
 
-    return render_template("pages/lettre_suppression.html", lettre=lettre_a_supprimer)
+    return render_template("pages/lettre/lettre_suppression.html", lettre=lettre_a_supprimer)
 
 
 # TRANSCRIPTION : Routes pour la création, édition et suppression de transcription de lettre :
@@ -605,7 +605,7 @@ def nouvelle_transcription(lettre_id):
             # grâce à la fonction lettres précédemment définie.
             return redirect(url_for("lettres"))
 
-    return render_template("pages/transcription_creation.html", nom="Correspondance jésuite",
+    return render_template("pages/transcription/transcription_creation.html", nom="Correspondance jésuite",
                            lettre_a_transcrire=lettre_a_transcrire)
 
 
@@ -668,7 +668,7 @@ def modification_transcription(transcription_id):
             # grâce à la fonction lettres précédemment définie.
             return redirect(url_for("lettres"))
 
-    return render_template("pages/transcription_edition.html", nom="Correspondance jésuite",
+    return render_template("pages/transcription/transcription_edition.html", nom="Correspondance jésuite",
                            transcription_a_modifier=transcription_a_modifier)
 
 
@@ -712,7 +712,7 @@ def suppression_transcription(transcription_id):
         # L'utilisateur est redirigé vers la page des lettres,
         # grâce à la fonction lettres précédemment définie.
         return redirect(url_for('lettres'))
-    return render_template("pages/transcription_suppression.html", transcription=transcription_a_supprimer)
+    return render_template("pages/transcription/transcription_suppression.html", transcription=transcription_a_supprimer)
 
 
 # PUBLICATIONS : Routes pour la création, l'édition et la suppression d'ouvrage (table publication) :
@@ -746,7 +746,7 @@ def publication_creation():
         else:
             flash("Les erreurs suivantes ont été rencontrées : " + " ; ".join(donnees_publication), "danger")
 
-    return render_template("pages/publication_creation.html", errors="errors")
+    return render_template("pages/publication/publication_creation.html", errors="errors")
 
 
 # Route pour l'édition d'un ouvrage dans lequel une lettre est publiée :
@@ -814,7 +814,7 @@ def edition_publication(publication_id):
             # grâce à la fonction publications précédemment définie.
             return redirect(url_for("publications"))
 
-    return render_template("pages/publication_edition.html", nom="Correspondance jésuite",
+    return render_template("pages/publication/publication_edition.html", nom="Correspondance jésuite",
                            publication_modifiee=publication_modifiee)
 
 
@@ -858,4 +858,4 @@ def suppression_publication(publication_id):
         # grâce à la fonction publications précédemment définies.
         return redirect(url_for('publications'))
 
-    return render_template("pages/publication_suppression.html", publication=source_a_supprimer)
+    return render_template("pages/publication/publication_suppression.html", publication=source_a_supprimer)
