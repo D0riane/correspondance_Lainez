@@ -1,0 +1,64 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if lettre %}| Publication {{publication.publication_id}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+    {% if publication %}
+<div>
+    <h3 class="text-center">
+        <br/>
+        Lettres publiées dans : <br/> </h3>
+
+    <h5 class="text-center">
+        <em class="font-italic"> {{publication.publication_titre}} </em>,
+        {% if publication.publication_volume %}
+                Volume {{publication.publication_volume}}
+        {% endif %}
+        (P-{{publication.publication_id}})
+        <br/>
+    </h5>
+
+    <table class="table">
+        <thead>
+                        <tr>
+                                <th>L-#</th>
+                                <th>Date</th>
+                                <th>Lieu</th>
+                                <th>Auteur</th>
+
+                        </tr>
+                </thead>
+        <tbody>
+        {% for lettre in lettres %}
+        <tr width=40% >
+            <td><a href={{url_for('unique_lettre',lettre_id=lettre.lettre_id)}}>L-{{lettre.lettre_id}}</a></td>
+                            <td>{{lettre.lettre_date}}</td>
+                            <td>{{lettre.lettre_lieu}}</td>
+                            <td>{{lettre.lettre_redacteur}}</td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+    {% else %}
+    <div>
+        <p>Cette publication n'existe pas ou plus dans notre base de données.</p>
+    </div>
+    {% endif %}
+
+<br/>
+<br/>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('accueil')}}">Retourner à l'accueil</a>
+    <a class="btn btn-outline-dark" role="button" href="{{url_for('publications')}}">Retourner aux publications</a>
+    {% if publication %}
+        <a class="btn btn-outline-dark" role="button"
+           href="{{url_for('api_publication_unique', publication_id = publication.publication_id)}}">JSON</a>
+    {% endif %}
+<br/>
+<br/>
+<br/>
+{% endblock %}
