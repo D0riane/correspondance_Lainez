@@ -4,40 +4,40 @@
 
 {% block corps %}
 <h1>{{titre}}</h1>
-    {% if resultats %}
+
+{% if resultats %}
     <p>Il y a {{resultats.total}} lettres qui répondent à votre requête :
         <a class="btn btn-outline-dark" role="button" href={{url_for('api_lettres_recherche',keyword=keyword)}}>JSON</a>
     </p>
 
-
-<table class="table">
-                <thead>
-                        <tr>
-                                <th>L-#</th>
-                                <th>Date</th>
-                                <th>Lieu</th>
-                                <th>Auteur</th>
-                                <td>Volume</td>
-                        </tr>
-                </thead>
-                <tbody>
-                        {% for lettre in resultats.items %}
-                        <tr>
-                            <td><a href={{url_for('unique_lettre',lettre_id=lettre.lettre_id)}}>L-{{lettre.lettre_id}}</a></td>
-                            <td>{{lettre.lettre_date}}</td>
-                            <td>{{lettre.lettre_lieu}}</a></td>
-                            <td>{{lettre.lettre_redacteur}}</td>
-                            <td width="30%">{% if lettre.lettre_volume %}
-                                {% for publication in lettre.lettre_volume %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>L-#</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Auteur</th>
+                <td>Volume</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lettre in resultats.items %}
+                <tr>
+                    <td><a href={{url_for('unique_lettre',lettre_id=lettre.lettre_id)}}>L-{{lettre.lettre_id}}</a></td>
+                    <td>{{lettre.lettre_date}}</td>
+                    <td>{{lettre.lettre_lieu}}</a></td>
+                    <td>{{lettre.lettre_redacteur}}</td>
+                    <td width="30%">
+                        {% if lettre.lettre_volume %}
+                            {% for publication in lettre.lettre_volume %}
                                 {{publication.publication_titre}} [Tome : {{publication.publication_volume}}] .
-                                {% endfor %}
-                                {% endif %}</td>
-                        </tr>
-                        {% endfor %}
-                </tbody>
-        </table>
-
-
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <nav aria-label="research-pagination">
       <ul class="pagination">
@@ -63,8 +63,7 @@
         {%- endfor %}
       </ul>
     </nav>
-
-    {% endif %}
+{% endif %}
 {% endblock %}
 
 
