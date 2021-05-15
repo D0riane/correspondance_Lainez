@@ -30,3 +30,4 @@ login = LoginManager(app)
 # Import les routes nécessaires au fonctionnement de l'application à son lancement.
 from .routes import generic
 from .routes import api
+from .filters import split_new_lines

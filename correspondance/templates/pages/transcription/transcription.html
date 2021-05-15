@@ -27,11 +27,11 @@
         <tbody>
         <tr>
             <td>
-                <p>
-                    {% if transcription %}
-                    {{transcription.transcription_texte}}
-                    {% endif %}
-                </p>
+                {% if transcription %}
+                    {% for transcrip in transcription.transcription_texte | split_new_lines %}
+                        <p>{{transcrip}}</p>
+                    {% endfor %}
+                {% endif %}
             </td>
         </tr>
         <tr>
